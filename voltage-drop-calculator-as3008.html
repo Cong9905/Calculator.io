@@ -1,4 +1,3 @@
-﻿
 <!DOCTYPE html>
 
 <!-- MathJax -->
@@ -110,8 +109,7 @@
 				   <b>I</b> = Current in ampere (A).<br> 
 				   <b>L</b> = Cable distance in meters (m).<br> 
 				   <b>Z</b> or <b>R</b> = Cable impedance or resistance in &Omega;/km.<br> 
-				   Read more <a href='https://www.jcalc.net/voltage-drop-calculator-as3008#howtocalculate'>here.</a>
-				   Or calculate it with this <a href='https://www.jcalc.net/voltage-drop-calculator-as3008'>calculator.</a></p>"
+				   
 			}	
            }, {
         "@type": "Question",
@@ -123,7 +121,7 @@
 				   <b>I</b> = Current in ampere (A).<br> 
 				   <b>L</b> = Cable distance in meters (m).<br> 
 				   <b>R</b> = Cable resistance in &Omega;/km.<br> 
-				   Try it with this <a href='https://www.jcalc.net/voltage-drop-calculator-as3008'>calculator.</a></p>"
+			
           }
 		  }, {
         "@type": "Question",
@@ -131,8 +129,7 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "According to AS/NZS 3000, <b>3%</b> for final sub-ciruits. And <b>5%</b> between the Point of Supply and the load. 
-		  Read more <a href='https://www.jcalc.net/voltage-drop-calculator-as3008#allowable'>here.</a>
-		  Or calculate it with this <a href='https://www.jcalc.net/voltage-drop-calculator-as3008'>calculator.</a>" 
+		  
 			}
 			  }, {
         "@type": "Question",
@@ -151,8 +148,7 @@
 				  The voltage drop will be <b>Vdrop=10A&times;2&times1&Omega;=20V</b>. 
 				  Therefore, only 210V will be available for your appliance. 
 				  And <b>P=20V&times;10A=200W</b> will be wasted as heat in the wire. 
-				  Read more <a href='https://www.jcalc.net/voltage-drop-calculator-as3008#whatis'>here.</a>
-		  		  Or calculate it with this <a href='https://www.jcalc.net/voltage-drop-calculator-as3008'>calculator.</a>" 
+				  
 			}
          }]
         }
@@ -226,39 +222,6 @@ function changeSelectLocal(id) {
 	   
 	   }
 }
-</script></he>
-
-<body>
-
-  <!-- Top menu starts here-->
-<div class="headDiv">
-    <hr class="top_hr1">
-
-    <div class="topnav" id="topnav">
-        <a id="logo" href="index.htm">jCalc</a>
-        <a id="menuBarsLink" href="javascript:void(0);" class="icon" onclick="myFunction()"><img id="menuBarsImage" width="45" height="45" alt="menu" src="image/menu-bars.png"></a>
-
-                    <a id="login" href="https://www.jcalc.net/user-controller/loginForm">Log in</a>
-            <a href="contact.html">Contact</a>
-            <a href="about.html">About</a>
-            <a href="updates.html">Updates</a>
-            <a href="https://www.jcalc.net/user-controller/showSubscriptionOffers">Prices</a>
-            <a href="faq.html">FAQ</a>
-            <a href="index.htm">Home</a>
-        
-    </div>
-    <hr class="top_hr2">
-
-    <script>
-        function myFunction() {
-            var x = document.getElementById("topnav");
-            if (x.className === "topnav") {
-                x.className += " responsive";
-            } else {
-                x.className = "topnav";
-            }
-        }
-    </script>
 </div>
   <div id="pageGridDiv">
 
@@ -272,7 +235,6 @@ function changeSelectLocal(id) {
 
         <div id="formDiv" class="formDiv">
 	<!--TODO change action -->
-	<form action="https://www.jcalc.net/voltage-drop-calculator-as3008" method="post" id="calcForm" class="calcForm">
 		Choose what to calculate
 		<br>
 		<select name="function" id="function" onchange="changeSelect(this.id)"><option value="Voltage drop" selected="selected">Voltage drop</option><option value="Minimum cable size">Minimum cable size</option><option value="Maximum cable distance">Maximum cable distance</option></select>		<br>
