@@ -6,52 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Cable size calculator for current rating, voltage drop, loop impedance, earth cable and short circuit, based on Australia and New Zealand standard AS/NZS 3008.">
 <meta name="author" content="Adam van Staden">
-<title>Cable Size Calculator AS/NZS 3008 | jCalc.net</title>
-
-<link rel="apple-touch-icon" sizes="57x57" href="https://www.jcalc.net/image/icon/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="https://www.jcalc.net/image/icon/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="https://www.jcalc.net/image/icon/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="https://www.jcalc.net/image/icon/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="https://www.jcalc.net/image/icon/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="https://www.jcalc.net/image/icon/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="https://www.jcalc.net/image/icon/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="https://www.jcalc.net/image/icon/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="https://www.jcalc.net/image/icon/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192" href="https://www.jcalc.net/image/icon/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://www.jcalc.net/image/icon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="https://www.jcalc.net/image/icon/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="https://www.jcalc.net/image/icon/favicon-16x16.png">
-<link rel="icon" type="image/x-icon" href="https://www.jcalc.net/image/icon/favicon.ico">
-<link rel="manifest" href="https://www.jcalc.net/image/icon/manifest.json">
-
-  <!-- LinkedIn -->
-  <meta property="og:type" content="Website">
-  <meta property="og:title" content="Cable Size Calculator AS/NZS 3008">
-  <meta property="og:image" content="https://www.jcalc.net/image/cable-sizing-calculator-as3008-icon.png">
-  <meta property="og:description" content="Cable size calculator for current rating, voltage drop, loop impedance, earth cable and short circuit, based on Australia and New Zealand standard AS/NZS 3008.">
-  <meta property="og:url" content="https://www.jcalc.net/cable-sizing-calculator-as3008">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "CreativeWork",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://www.jcalc.net/cable-sizing-calculator-as3008"
-      },
-      "headline": "Cable Size Calculator AS/NZS 3008",
-      "datePublished": "2014-11-11T00:00:00",
-      "dateModified": "2014-11-11T00:00:00",
-      "author": {
-        "@type": "Person",
-        "name": "Adam van Staden"
-      },
-      "description": "Cable size calculator for current rating, voltage drop, loop impedance, earth cable and short circuit, based on Australia and New Zealand standard AS/NZS 3008.",
-      "image": "https://www.jcalc.net/image/cable-sizing-calculator-as3008-icon.png"
-    }
-  </script>
-
 
 <!-- MathJax -->
 
@@ -1303,22 +1257,7 @@ h3 {font-size:18px;margin-top:10px;margin-bottom:5px}
 </head>
 
 <!-- Top menu starts here-->
-<div class="headDiv">
-    <hr class="top_hr1">
 
-    <div class="topnav" id="topnav">
-        <a id="logo" href="index.htm">jCalc</a>
-        <a id="menuBarsLink" href="javascript:void(0);" class="icon" onclick="myFunction()"><img id="menuBarsImage" width="45" height="45" alt="menu" src="image/menu-bars.png"></a>
-
-                    <a id="login" href="https://www.jcalc.net/user-controller/loginForm">Log in</a>
-            <a href="contact.html">Contact</a>
-            <a href="about.html">About</a>
-            <a href="updates.html">Updates</a>
-            <a href="https://www.jcalc.net/user-controller/showSubscriptionOffers">Prices</a>
-            <a href="faq.html">FAQ</a>
-            <a href="index.htm">Home</a>
-        
-    </div>
     <hr class="top_hr2">
 
     <script>
@@ -1341,7 +1280,7 @@ h3 {font-size:18px;margin-top:10px;margin-bottom:5px}
    <div class="calcDiv" id="calculator-form" data-nosnippet="">
 
       <!--TODO change action -->
-      <form action="https://www.jcalc.net/cable-sizing-calculator-as3008" method="post" id="calcForm" class="calcForm" onchange="this.reportValidity()" autocomplete="off">
+   
          <div class="formGrid" id="formGrid">
 
             <!-- Standard -->
@@ -2071,43 +2010,6 @@ h3 {font-size:18px;margin-top:10px;margin-bottom:5px}
          </li>
       </ul>
 
-      <h2 id="earthCableHeadingInfo">Earth cable parameters</h2>
-      <ul class="parameterList">
-         <li id="earthInsulationInfo"><b>Earth cable insulation: </b>Applicable to single-core cables. It can be different than the active cable insulation.
-            The options are the same as the <a href="#insulationInfo">active cable insulation options.</a></li>
-         <li id="earthIsFlexibleInfo"><b>Flexible earth: </b>Applicable to single-core cables. Select if a flexible earth cable is used.</li>
-         <li id="earthConductorInfo"><b>Earth conductor: </b>Applicable to single-core cables. Select Copper or Aluminium. Note that you cannot select Aluminium for a copper active cable. Please let me know if you need to.</li>
-         <li id="selectedEarthSizeInfo">
-            <p><b>Earth core size (mm<sup>2</sup>): </b>Select an earth cable size or select Auto.</p>
-            <p>To manually select a specific earth size, you have to manually select a specific active size first.</p>
-            <p>For multi-core <u>copper</u> cables, in Auto mode, the calculator will select the minimum earth size from <a href="https://www.jcalc.net/minimum-cable-earth-sizes-as3000">Table 5.1 in AS/NZS 3000-2018</a>. These sizes match most commercial copper multi-core cables.</p>
-
-            <p>For multi-core <u>aluminium</u> cables, in Auto mode, the calculator will select an earth size equal to the active size. This is the case in most commercial aluminium cables.</p>
-
-            <p>For single-core cables, in Auto, the selection process is:</p>
-            <ul>
-               <li>Step 1: The calculator starts with the minimum recommended earth size <a href="https://www.jcalc.net/minimum-cable-earth-sizes-as3000">Table 5.1 in AS/NZS 3000-2018</a>.</li>
-               <li>Step 2: The earth cable size is increased until the earth fault current rating and earth loop impedance are adequate.</li>
-               <li>Step 3: If no suitable earth cable size is found, the active size is used. If you need a larger earth cable, select it manually.</li>
-            </ul>
-            <p>If the earth core size is selected manually, the selected earth cable is still checked for compliance against Table 5.1 in AS/NZS 3000-2018. The fault rating and earth loop impedance are also checked when these options are selected. This applies to both single and multi-core cables.</p>
-
-            <p>Note that <u>AS/NZS 3000:2018, Table 5.1 does not specify aluminium earth sizes</u>. Aluminium earth sizes in the calculator are calculated based on the impedance and fault rating of the required copper earth cables. Click <a href="https://www.jcalc.net/minimum-cable-earth-sizes-as3000">here</a> for more details.</p>
-
-            <p>For parallel active and parallel earth cables, the combined active size is calculated as:</p>
-            <p> \(S_{active\_combined} = \dfrac {S_{active} \cdot m}{n} \) </p>
-            <p>Where,</p>
-            <ul>
-               <li><b>S<sub>active</sub></b> is the size of one of the active cables in mm<sup>2</sup>.</li>
-               <li><b>m</b> is the number of parallel phase cables.</li>
-               <li><b>n</b> is the number of parallel earth cables.</li>
-            </ul>
-            <p>The combined active size is then used to select the minimum earth size from <a href="https://www.jcalc.net/minimum-cable-earth-sizes-as3000">Table 5.1 in AS/NZS 3000-2018</a>.</p>
-            <p>For copper earth cables, if the combined active size is larger than 630 mm<sup>2</sup>, an earth size of at least 25% of the combined active size is calculated, as specified by <a href="https://www.jcalc.net/minimum-cable-earth-sizes-as3000">Table 5.1 in AS/NZS 3000-2018</a>.</p>
-            <p>For aluminium earth cables, if the combined active size is larger than 630 mm<sup>2</sup>, an aluminium earth size of at least 40% of the combined active aluminium size is used from the <a href="https://www.jcalc.net/minimum-cable-earth-sizes-as3000">jCalc calculated minimum aluminium earth size values</a>.</p>
-            <p>Note that for multiple earth cables, the calculator checks that each earth cable is equal to, or larger than, the minimum earth cable required for one individual active conductor.</p>
-            <p>For example, in <a href="https://www.jcalc.net/minimum-cable-earth-sizes-as3000">Table 5.1 in AS/NZS 3000-2018</a> the minimum earth cable size for a 240 mm<sup>2</sup> active cable is 95 mm<sup>2</sup>.
-               If two earth cables are selected, the minimum individual earth cable size is still 95 mm<sup>2</sup>.</p>
          </li>
 
          <li id="numberOfEarthCablesInfo">
