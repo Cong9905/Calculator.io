@@ -1,0 +1,708 @@
+﻿
+<!DOCTYPE html>
+
+<!-- MathJax -->
+
+  <script>
+    MathJax = {
+      loader: {
+        load: ['input/tex', 'output/chtml', 'ui/lazy']
+      },
+      tex: {
+        packages: ['base', 'ams']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async="" src="npm/mathjax%403/es5/startup.js">
+  </script>
+
+
+  <link rel="stylesheet" type="text/css" href="css/style.css?v=4">
+
+  <style>
+    .ad_vertical_1,
+    .ad_vertical_2 {
+      display: block;
+    }
+
+    /* Page grid */
+    #pageGridDiv {
+      display: grid;
+      grid-template-columns: 1024px 11px auto;
+      grid-column-gap: 0px;
+      align-items: top;
+      grid-template-rows: auto;
+      margin: auto;
+      width: fit-content;
+    }
+
+    #mainDiv {
+      grid-area: 1 / 1 / span 1 /span 1;   margin:auto;
+    }
+
+    #sideBarRightDiv {
+      grid-area: 1 / 3 / span 1 /span 1;
+    }
+  
+    @media screen and (max-width: 1024px) {
+
+        .ad_vertical_2 {
+        display: none;
+      }
+
+      #pageGridDiv {
+        grid-template-columns: auto;
+      }
+
+      #mainDiv {
+        grid-area: 1 / 1 / span 1 /span 1;
+      }
+
+      #sideBarRightDiv {
+        display: none;
+      }
+  </style>
+
+  <style>
+#function {width:280px}
+#voltage {width:70px}
+#phase {width:145px}
+#load {width:70px}
+#loadunit {width:75px}
+#pf {width:65px} 
+#cableSize {width:80px}
+#distance {width:80px}
+#requiredVoltDrop {width:70px}
+
+#calcDiv                {display:grid;grid-template-columns:340px 320px auto;align-items:top;grid-template-rows:auto;grid-column-gap:5px;grid-auto-flow:row dense;}
+
+#formDiv                {grid-area: 1 / 1 / span 3 /span 1;}
+#resultsLoadDiv         {grid-area: 1 / 2 / span 1 /span 1;}
+#resultsCableDiv        {grid-area: 2 / 2 / span 2 /span 1;}
+#resultsVoltageDropDiv  {grid-area: 1 / 3 / span 2 /span 1;}
+#resultsStepByStepDiv   {grid-area: 3 / 3 / span 1 /span 1;}
+
+@media screen and (max-width: 1023px) { 
+#calcDiv                {grid-template-columns:auto; grid-template-rows:auto;}
+#formDiv                {grid-area: auto / 1 / span 1 /span 1;}
+#resultsLoadDiv         {grid-area: auto / 1 / span 1 /span 1;}
+#resultsVoltageDropDiv  {grid-area: auto / 1 / span 1 /span 1;}
+#resultsCableDiv        {grid-area: auto / 1 / span 1 /span 1;}
+#resultsStepByStepDiv   {grid-area: auto / 1 / span 1 /span 1;}
+}
+
+</style>
+
+  
+<script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+	 "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "How to calculate voltage drop?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "<p>
+		  		   DC:			     <b>V = I&sdot;L&sdot;2&sdot;R/1000.</b><br>
+		  		   Single-phase AC:  <b>V = I&sdot;L&sdot;2&sdot;Z/1000.</b><br>
+				   Three-phase AC:   <b>V = I&sdot;L&sdot;&radic;3&sdot;Z/1000</b>.<br>
+				   <b>I</b> = Current in ampere (A).<br> 
+				   <b>L</b> = Cable distance in meters (m).<br> 
+				   <b>Z</b> or <b>R</b> = Cable impedance or resistance in &Omega;/km.<br> 
+				   Read more <a href='https://www.jcalc.net/voltage-drop-calculator-as3008#howtocalculate'>here.</a>
+				   Or calculate it with this <a href='https://www.jcalc.net/voltage-drop-calculator-as3008'>calculator.</a></p>"
+			}	
+           }, {
+        "@type": "Question",
+        "name": "What is the DC voltage drop formula?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "<p>
+		  		   DC:			     <b>V = I&sdot;L&sdot;2&sdot;R/1000.</b><br>
+				   <b>I</b> = Current in ampere (A).<br> 
+				   <b>L</b> = Cable distance in meters (m).<br> 
+				   <b>R</b> = Cable resistance in &Omega;/km.<br> 
+				   Try it with this <a href='https://www.jcalc.net/voltage-drop-calculator-as3008'>calculator.</a></p>"
+          }
+		  }, {
+        "@type": "Question",
+        "name": "What is the allowable voltage drop?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "According to AS/NZS 3000, <b>3%</b> for final sub-ciruits. And <b>5%</b> between the Point of Supply and the load. 
+		  Read more <a href='https://www.jcalc.net/voltage-drop-calculator-as3008#allowable'>here.</a>
+		  Or calculate it with this <a href='https://www.jcalc.net/voltage-drop-calculator-as3008'>calculator.</a>" 
+			}
+			  }, {
+        "@type": "Question",
+        "name": "What is voltage drop?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Voltage drop is the loss off voltage over a cable due to its resistance and reactance. 
+		  		  <ul>
+		  		  <li>It may cause equipment to malfunction.</li>
+				  <li>It reduces the potential energy.</li> 
+				  <li>And it results in an energy loss.</li> 
+				  </ul>
+				  For example, if you supply a 21&Omega; heater from a 230V supply. 
+				  And the resistance of the wire is 1&Omega;. 
+				  Then the current will be <b>I=230V/(21&Omega;+ 2&times;1&Omega;)=10A</b>. 
+				  The voltage drop will be <b>Vdrop=10A&times;2&times1&Omega;=20V</b>. 
+				  Therefore, only 210V will be available for your appliance. 
+				  And <b>P=20V&times;10A=200W</b> will be wasted as heat in the wire. 
+				  Read more <a href='https://www.jcalc.net/voltage-drop-calculator-as3008#whatis'>here.</a>
+		  		  Or calculate it with this <a href='https://www.jcalc.net/voltage-drop-calculator-as3008'>calculator.</a>" 
+			}
+         }]
+        }
+   </script>
+
+
+  <script>
+    window.addEventListener("DOMContentLoaded", setScrollPosition);
+
+    function calculate1() {
+
+      if (typeof calculate1Local !== 'undefined' && typeof calculate1Local === 'function') {
+        calculate1Local();
+      }
+
+      var calcForm = document.getElementById('calcForm');
+      if (calcForm.checkValidity() == false) {
+        calcForm.reportValidity();
+      } else {
+        var scrollPosition = window.pageYOffset;
+        document.getElementById("scrollPosition").value = scrollPosition;
+        document.getElementById("action").value = 'calculate';
+        document.getElementById("calcForm").submit();
+      }
+    }
+
+    function changeSelect(id) {
+
+      if (typeof changeSelectLocal !== 'undefined' && typeof changeSelectLocal === 'function') {
+        changeSelectLocal(id);
+      }
+
+      if (calcForm.checkValidity() == false) {
+        calcForm.reportValidity();
+      } else {
+        var scrollPosition = window.pageYOffset;
+        document.getElementById("scrollPosition").value = scrollPosition;
+        document.getElementById("action").value = 'changeSelect';
+        document.getElementById("calcForm").submit();
+      }
+    }
+
+    function setScrollPosition(e) {
+      scrollPosition = document.getElementById("scrollPosition").value;
+      window.scrollTo(0, scrollPosition);
+    }
+  </script>
+
+  <!-- Hide and show power factor -->
+<script>
+function calculate1Local(id) {
+   console.log("In calculate1Local"); 
+   //Add calculator specific code here.
+   }
+
+function changeSelectLocal(id) {
+	if (id === 'loadunit') {
+       loadunit = document.getElementById("loadunit").value
+       if (loadunit === "kW" || loadunit === "hp") {
+	   	  document.getElementById("pf").style.visibility = "visible";		
+	   	  document.getElementById("cos_phi").style.visibility = "visible";
+	   	  }
+       if (loadunit === "kVA" || loadunit === "A") {
+       	  document.getElementById("pf").style.visibility = "hidden";
+	   	  document.getElementById("cos_phi").style.visibility = "hidden";
+       	  }
+	  }
+	if (id === 'function') {
+	   document.getElementById("action").value = "changeSelect";
+	   document.getElementById("calcForm").submit();
+	   
+	   }
+}
+</script></he>
+
+<body>
+
+  <!-- Top menu starts here-->
+<div class="headDiv">
+    <hr class="top_hr1">
+
+    <div class="topnav" id="topnav">
+        <a id="logo" href="index.htm">jCalc</a>
+        <a id="menuBarsLink" href="javascript:void(0);" class="icon" onclick="myFunction()"><img id="menuBarsImage" width="45" height="45" alt="menu" src="image/menu-bars.png"></a>
+
+                    <a id="login" href="https://www.jcalc.net/user-controller/loginForm">Log in</a>
+            <a href="contact.html">Contact</a>
+            <a href="about.html">About</a>
+            <a href="updates.html">Updates</a>
+            <a href="https://www.jcalc.net/user-controller/showSubscriptionOffers">Prices</a>
+            <a href="faq.html">FAQ</a>
+            <a href="index.htm">Home</a>
+        
+    </div>
+    <hr class="top_hr2">
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("topnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+</div>
+  <div id="pageGridDiv">
+
+    <div id="mainDiv">
+
+      <h1>AC and DC Voltage Drop Calculator AS/NZS 3008</h1>
+      <p>Calculate the AC or DC voltage drop with this Free Online Voltage Drop Calculator. Supports AS/NZS 3008. Includes voltage drop Formulas and Examples.</p>
+
+      
+      <div id="calcDiv" data-nosnippet="">
+
+        <div id="formDiv" class="formDiv">
+	<!--TODO change action -->
+	<form action="https://www.jcalc.net/voltage-drop-calculator-as3008" method="post" id="calcForm" class="calcForm">
+		Choose what to calculate
+		<br>
+		<select name="function" id="function" onchange="changeSelect(this.id)"><option value="Voltage drop" selected="selected">Voltage drop</option><option value="Minimum cable size">Minimum cable size</option><option value="Maximum cable distance">Maximum cable distance</option></select>		<br>
+		Voltage (V)
+		<br>
+		<input type="text" name="voltage" id="voltage" value="230">
+		<select name="phase" id="phase" onchange="changeSelect(this.id)"><option value="1 Phase AC">1 Phase AC</option><option value="3 Phase AC">3 Phase AC</option><option value="DC">DC</option></select>		<br>
+		Load rating (A, hp, kW or kVA)
+		<br>
+		<input type="text" name="load" id="load" value="10">&nbsp;<select name="loadunit" id="loadunit" onchange="changeSelect(this.id)"><option value="A" selected="selected">A</option><option value="hp">hp</option><option value="kW">kW</option><option value="kVA">kVA</option></select>		&nbsp;
+		<input type="text" style="visibility:hidden;" name="pf" id="pf" value="0.86"><span id="cos_phi" style="visibility:hidden">pf</span>
+					<br>
+			Cable size (mm<sup>2</sup>)
+			<br>
+			<select name="cableSize" id="cableSize" onchange="changeSelect(this.id)"><option value="1">1</option><option value="1.5">1.5</option><option value="2.5" selected="selected">2.5</option><option value="4">4</option><option value="6">6</option><option value="10">10</option><option value="16">16</option><option value="25">25</option><option value="35">35</option><option value="50">50</option><option value="70">70</option><option value="95">95</option><option value="120">120</option><option value="150">150</option><option value="185">185</option><option value="240">240</option><option value="300">300</option><option value="400">400</option><option value="500">500</option></select>							<br>
+			Distance to load (m)
+			<br>
+			<input type="text" name="distance" style="width: 80px;" value="30">
+						<input type="hidden" name="scrollPosition" id="scrollPosition" value="0">
+		<input type="hidden" name="action" id="action" value="calculate">
+		<input type="button" id="calculateButton" value="Calculate" onclick="calculate1()">
+	</form>
+</div>
+        
+      </div>
+
+      <div id="contentDiv">
+
+    <h2>See Also</h2>
+
+    <ul>
+        <li><a href="cable-sizing-calculator-as3008.html">Cable sizing calculator AS/NZS 3008</a></li>
+        <li><a href="maximum-demand-calculator-as3000.html">Maximum demand calculator AS/NZS 300</a></li>
+        <li><a href="arc-flash-calculator-ieee.html">Arc Flash Calculator IEEE 1584</a></li>
+
+    </ul>
+
+    <h2>Voltage Drop Calculator Parameters</h2>
+
+    <ul>
+        <li><b>Choose what to calculate:</b> Voltage drop, Minimum cable size or Maximum cable distance</li>
+        <li><b>Rated voltage (V):</b> Specify the voltage in volt, and select the phase arrangement: <b>1 Phase AC</b>, <b>3 Phase AC</b> or <b>DC</b>.</li>
+        <li><b>Load (kW, kVA, A, hp):</b> Specify the load in A, hp, kW or kVA. Specify the power factor (cos&Phi;) when the electrical load is specified in kW or hp.</li>
+        <li><b>Cable size (mm<sup>2</sup>):</b> Select a standard electrical cable size in mm<sup>2</sup>, as defined in the AS/NZS 3008.</li>
+        <li><b>Distance (m, ft):</b> Specify the estimated cable length in meters or feet.</li>
+        <li><b>Allowable voltage drop (%):</b> Specify the maximum allowable voltage drop in a percentage of the nominal voltage.
+            What is allowed? Click <a href="#allowable">here</a> for more information.</li>
+    </ul>
+
+    <h2 id="whatis">What is Voltage Drop?</h2>
+
+    <p>Voltage drop is the loss of voltage over a wire due to the wire's electrical resistance and reactance. The problem with voltage drop is:</p>
+    <ul>
+        <li>It may cause equipment to malfunction.</li>
+        <li>It reduces the potential energy. </li>
+        <li>It results in an energy loss. </li>
+    </ul>
+    <p>For example, if you supply a 21&nbsp;&Omega; heater from a 230&nbsp;V supply. And the resistance of the wire is 1&nbsp;&Omega;.
+        Then the current will be <span class="formula">I = 230 V / (21 &Omega; + 2 &times; 1 &Omega;) = 10 A</span>.</p>
+
+    <p>The voltage drop will be <span class="formula">V<sub>drop</sub> = 10 A &times; 2 &times; 1 &Omega; = 20 V</span>.
+        Therefore, only 210&nbsp;V will be available for your appliance. And <span class="formula">P = 20 V &times; 10 A = 200 W</span> will be wasted as heat in the wire.</p>
+
+    <h2 id="allowable">What is the Allowable Voltage Drop?</h2>
+
+    <p>AS/NZS 3000:2018 in Australia and New Zealand specifies the following values:</p>
+
+    <table class="generalTable" style="max-width:600px">
+        <tr>
+            <td>From the Point of Supply to the final load</td>
+            <td style="text-align:center">5%</td>
+        </tr>
+        <tr>
+            <td>From the LV terminals of a transformer to the final load</td>
+            <td style="text-align:center">7%</td>
+        </tr>
+    </table>
+
+    <p>For residential applications you must limit the voltage drop between the Point of Supply and the load to 5%. </p>
+
+    <p>This means: </p>
+
+    <ul>
+        <li>The utility limits the voltage drop at the Point of Supply to 2%. </li>
+        <li>As a guideline, you limit the voltage drop between the Point of Supply and the Main Switchboard to 2%. </li>
+        <li>As a guideline, you limit the voltage drop in the final sub-circuit to <b>3%.</b></li>
+    </ul>
+
+    <p>Therefore, 2% + 2% + 3% = 7 %.</p>
+
+    <p>Typical voltage drop applications are shown below:</p>
+
+    <table class="generalTable">
+        <tr>
+            <td>Residential and light commercial</td>
+            <td>5%</td>
+            <td>AS/NZS 3000:2007. Between the Point of Supply and load.</td>
+        </tr>
+        <tr>
+            <td>Industrial and large commercial</td>
+            <td>7%</td>
+            <td>AS/NZS 3000:2007. Between the Point of Supply and load. Where the Point of Supply is the low voltage terminals of a transformer.</td>
+        </tr>
+        <tr>
+            <td>Industrial</td>
+            <td>3%</td>
+            <td>Common practice. Between switchboard and <b>continuous</b> loads, e.g. motors. Where the transformer and switchboard is part of the installation (site).</td>
+        </tr>
+        <tr>
+            <td>Industrial</td>
+            <td>5%</td>
+            <td>Common practice. Between switchboard and <b>intermittent</b> loads, e.g. valves. Where the transformer and switchboard is part of the installation (site).</td>
+        </tr>
+    </table>
+
+    <h2 id="howtocalculate">How to Calculate Voltage Drop?</h2>
+
+    <p>The voltage drop formulas for AC and DC are shown in the table below. </p>
+
+    <table class="generalTable" style="max-width:600px">
+        <tr>
+            <td style="text-align:center;font-weight:bold;">1-phase AC</td>
+            <td>\(\Delta V_{1\phi-ac}=\dfrac{I L 2 Z_c}{1000}\)</td>
+        </tr>
+        <tr>
+            <td style="text-align:center;font-weight:bold;">3-phase AC</td>
+            <td>\(\Delta V_{3\phi-ac}=\dfrac{I L \sqrt{3} Z_c}{1000}\)</td>
+        </tr>
+        <tr>
+            <td style="text-align:center;font-weight:bold;">DC</td>
+            <td>\(\Delta V_{dc}=\dfrac{I L 2 R_c}{1000}\)</td>
+        </tr>
+    </table>
+    <p>Where,</p>
+    <ul>
+        <li><b>I</b> is the load current in ampere (A). </li>
+        <li><b>L</b> is the wire distance on meters (m). </li>
+        <li><b>Z<sub>c</sub></b> is the wire impedance in &Omega;/km.</li>
+        <li><b>R<sub>c</sub></b> is the wire resistance in &Omega;/km. </li>
+    </ul>
+
+    <p>The impedance <b>Z<sub>c</sub></b> in the voltage drop calculator is calculated as:</p>
+    <p>\(Z_c = \sqrt{R_c^2 + X_c^2}\)</p>
+    Where,
+    <ul>
+        <li><b>R<sub>c</sub></b> is the wire resistance in &Omega;/km.</li>
+        <li><b>X<sub>c</sub></b> is the wire reactance in &Omega;/km.</li>
+    </ul>
+
+    <p>The formula above for <b>Z<sub>c</sub></b> is for the worse case. This is when the cable and load power factor is the same.</p>
+
+    <p>The Volt Drop Calculator uses the AC resistance R<sub>c</sub> values from Table 35 in AS/NZS 3008. The following column is used: 75°C, AC, multi-core, circular conductors.</p>
+
+    <p>Note that the standard does not specify the DC resistance.</p>
+
+
+    <p>The cable rating that is displayed in the results of the calculator is selected from Table 13 in AS/NZS 3008. This is for thermoplastic (PVC), three- and four-core cables, unenclosed and spaced from a surface.
+        For more cable types, use the <a href="cable-sizing-calculator-as3008.html">Cable sizing calculator AS/NZS3008.</a></p>
+
+    <h2>Voltage Drop Calculation Examples</h2>
+
+    <ul>
+        <li><a href="#example1">Example 1:</a> Residential 230 VAC, 15 A load.</li>
+        <li><a href="#example2">Example 2:</a> Residential 230 VAC, 10 A socket outlet.</li>
+        <li><a href="#example3">Example 3:</a> Residential 230 VAC, Swimming pool pump.</li>
+        <li><a href="#example4">Example 4:</a> Industrial 400 VAC, 3-phase motor.</li>
+        <li><a href="#example5">Example 5:</a> General 12 VDC, 1A load.</li>
+    </ul>
+
+    <h3 id="example1">Example 1: Voltage drop calculation example for a residential 230 VAC, 15 A, single-phase load.</h3>
+
+    <table class="generalTable" style="max-width: 600px">
+        <tr>
+            <td>Voltage</td>
+            <td>230 VAC, single-phase</td>
+        </tr>
+        <tr>
+            <td>Load</td>
+            <td>15 A</td>
+        </tr>
+        <tr>
+            <td>Distance</td>
+            <td>30 m</td>
+        </tr>
+        <tr>
+            <td>Conductor size</td>
+            <td>8 mm<sup>2</sup></td>
+        </tr>
+    </table>
+
+    <p>The resistance and reactance values in AS/NZS 3008 for an 8 mm<sup>2</sup> two-core cable are:</p>
+
+    <ul>
+        <li><b>R<sub>c</sub></b> = 2.23 &Omega;/km, from Table 35 -Multi-core, circular at 75&deg;C.</li>
+        <li><b>X<sub>c</sub></b> = 0.0906 &Omega;/km, from Table 30 -Multi-core, circular, PVC insulated.</li>
+    </ul>
+
+    <p>The impedance is calculated as:</p>
+    <p>\(Z_c = \sqrt{R_c^2 + X_c^2}\)</p>
+    <p>\(Z_c = \sqrt{2.23^2 + 0.0906^2}\)</p>
+    <p>\(Z_c = 2.232 \,\Omega/km \)</p>
+
+    <p>The voltage drop is calculated as:</p>
+
+    <p>\(\Delta V_{1\phi-ac}=\dfrac{I L 2 Z_c}{1000}\)</p>
+
+    <p>\(\Delta V_{1\phi-ac}=\dfrac{15 \cdot 30 \cdot 2 \cdot 2.232}{1000}\)</p>
+
+    <p>\(\Delta V_{1\phi-ac}=2.01 \, V\)</p>
+
+    <p>The percentage voltage drop is calculated as:</p>
+
+    <p>\(\% V_{1\phi-ac}= \dfrac {2.01} {230} \cdot 100 \)</p>
+
+    <p>\(\% V_{1\phi-ac}= 0.87 \, \% \)</p>
+
+
+    <h3 id="example2">Example 2: Voltage drop calculation example for a residential 230 VAC, 10A socket outlet.</h3>
+
+    <table class="generalTable" style="max-width: 600px">
+        <tr>
+            <td>Voltage</td>
+            <td>230 VAC, 1-phase</td>
+        </tr>
+        <tr>
+            <td>Load</td>
+            <td>One 10 A socket</td>
+        </tr>
+        <tr>
+            <td>Distance</td>
+            <td>20 m</td>
+        </tr>
+        <tr>
+            <td>Conductor size</td>
+            <td>2.5 mm<sup>2</sup></td>
+        </tr>
+    </table>
+
+    <p>The maximum demand current according to AS 3000: 2007 Table C 1 for one 10 A socket in a room is 10 A.</p>
+
+    <p>You can also calculate this with the <a href="maximum-demand-calculator-as3000.html">Maximum Demand Calculator with Examples AS/NZS 3000</a></p>
+
+    <p>The resistance and reactance values in AS/NZS 3008 for a 2.5 mm<sup>2</sup> two-core cable are:</p>
+
+    <ul>
+        <li><b>R<sub>c</sub></b> = 9.01 &Omega;/km, from Table 35 -Multi-core, circular at 75&deg;C.</li>
+        <li><b>X<sub>c</sub></b> = 0.102 &Omega;/km, from Table 30 -Multi-core, circular, PVC insulated.</li>
+    </ul>
+
+    <p>The impedance is calculated as:</p>
+    <p>\(Z_c = \sqrt{R_c^2 + X_c^2}\)</p>
+    <p>\(Z_c = \sqrt{9.01^2 + 0.102^2}\)</p>
+    <p>\(Z_c = 9.01 \,\Omega/km \)</p>
+
+    <p>The voltage drop is calculated as:</p>
+
+    <p>\(\Delta V_{1\phi-ac}=\dfrac{I L 2 Z_c}{1000}\)</p>
+
+    <p>\(\Delta V_{1\phi-ac}=\dfrac{10 \cdot 20 \cdot 2 \cdot 9.01}{1000}\)</p>
+
+    <p>\(\Delta V_{1\phi-ac}=3.61 \, V\)</p>
+
+    <p>The percentage voltage drop is calculated as:</p>
+
+    <p>\(\% V_{1\phi-ac}= \dfrac {3.61} {230} \cdot 100 \)</p>
+
+    <p>\(\% V_{1\phi-ac}= 1.57 \, \% \)</p>
+
+    <h3 id="example3">Example 3: Voltage drop calculation example for a residential 230 VAC, swimming pool pump.</h3>
+
+    <table class="generalTable" style="max-width: 600px">
+        <tr>
+            <td>Voltage</td>
+            <td>230 VAC, 1-phase</td>
+        </tr>
+        <tr>
+            <td>Load</td>
+            <td>0.75 kW, 0.85 power factor</td>
+        </tr>
+        <tr>
+            <td>Distance</td>
+            <td>40 m</td>
+        </tr>
+        <tr>
+            <td>Conductor size</td>
+            <td>4 mm<sup>2</sup></td>
+        </tr>
+    </table>
+
+
+    <p>The resistance and reactance values in AS/NZS 3008 for a 4 mm<sup>2</sup> two-core cable are:</p>
+
+    <ul>
+        <li><b>R<sub>c</sub></b> = 5.61 &Omega;/km, from Table 35 -Multi-core, circular at 75&deg;C.</li>
+        <li><b>X<sub>c</sub></b> = 0.102 &Omega;/km, from Table 30 -Multi-core, circular, PVC insulated.</li>
+    </ul>
+
+    <p>The impedance is calculated as:</p>
+    <p>\(Z_c = \sqrt{R_c^2 + X_c^2}\)</p>
+    <p>\(Z_c = \sqrt{5.61^2 + 0.102^2}\)</p>
+    <p>\(Z_c = 5.61 \,\Omega/km \)</p>
+
+    <p>The current is calculated as:</p>
+    <p>\(I = \dfrac{750}{230 \times 0.85} = \text{3.84 A}\)</p>
+
+    <p>The voltage drop is calculated as:</p>
+
+    <p>\(\Delta V_{1\phi-ac}=\dfrac{I L 2 Z_c}{1000}\)</p>
+
+    <p>\(\Delta V_{1\phi-ac}=\dfrac{3.84 \cdot 40 \cdot 2 \cdot 5.61}{1000}\)</p>
+
+    <p>\(\Delta V_{1\phi-ac}=1.72 \, V\)</p>
+
+    <p>The percentage voltage drop is calculated as:</p>
+
+    <p>\(\% V_{1\phi-ac}= \dfrac {1.72} {230} \cdot 100 \)</p>
+
+    <p>\(\% V_{1\phi-ac}= 0.75 \, \% \)</p>
+
+
+
+    <h3 id="example4">Example 4: Voltage drop calculation example for an industrial 400 VAC, 3-phase motor.</h3>
+
+    <table class="generalTable" style="max-width: 600px">
+        <tr>
+            <td>Voltage</td>
+            <td>400 VAC, 3-phase</td>
+        </tr>
+        <tr>
+            <td>Load</td>
+            <td>22 kW motor, pf 0.86.<br> Efficiency ignored.<br>Full load current: 36.92 A</td>
+        </tr>
+        <tr>
+            <td>Distance</td>
+            <td>100 m</td>
+        </tr>
+        <tr>
+            <td>Conductor size</td>
+            <td>16 mm<sup>2</sup></td>
+        </tr>
+    </table>
+
+    <p>The resistance and reactance values in AS/NZS 3008 for a 16 mm<sup>2</sup> two-core cable are:</p>
+
+    <ul>
+        <li><b>R<sub>c</sub></b> = 1.4 &Omega;/km, from Table 35 -Multi-core, circular at 75&deg;C.</li>
+        <li><b>X<sub>c</sub></b> = 0.0861 &Omega;/km, from Table 30 -Multi-core, circular, PVC insulated.</li>
+    </ul>
+
+    <p>The impedance is calculated as:</p>
+
+    <p>\(Z_c = \sqrt{R_c^2 + X_c^2}\)</p>
+    <p>\(Z_c = \sqrt{1.4^2 + 0.0861^2}\)</p>
+    <p>\(Z_c = 1.403 \,\Omega/km \)</p>
+
+    <p>The voltage drop is calculated as:</p>
+
+    <p>\(\Delta V_{3\phi-ac}=\dfrac{I L \sqrt{3} Z_c}{1000}\)</p>
+
+    <p>\(\Delta V_{3\phi-ac}=\dfrac{36.92 \cdot 100 \cdot \sqrt{3} \cdot 1.403}{1000}\)</p>
+
+    <p>\(\Delta V_{3\phi-ac}=8.97 V \, V\)</p>
+
+    The percentage voltage drop is calculated as:
+
+    <p>\(\% V_{3\phi-ac}= \dfrac {10.2} {400} \cdot 100 \)</p>
+
+    <p>\(\% V_{3\phi-ac}= 2.24 \, \% \)</p>
+
+    <h3 id="example5">Example 5: Voltage drop calculation example for a 12 VDC, 1 A load.</h3>
+
+    <table class="generalTable" style="max-width: 600px">
+        <tr>
+            <td>Voltage</td>
+            <td>12 VDC</td>
+        </tr>
+        <tr>
+            <td>Load</td>
+            <td>1 A</td>
+        </tr>
+        <tr>
+            <td>Distance</td>
+            <td>30 m</td>
+        </tr>
+        <tr>
+            <td>Conductor size</td>
+            <td>4 mm<sup>2</sup></td>
+        </tr>
+    </table>
+
+    <p>The resistance AS/NZS 3008 for a 4 mm<sup>2</sup> two-core cable is:</p>
+
+    <ul>
+        <li><b>R<sub>c</sub></b> = 5.61 &Omega;/km, from Table 35 -Multi-core, circular at 75&deg;C.</li>
+    </ul>
+
+    <p>Note that Reactance is not applicable in DC circuits.</p>
+
+    <p>Also note that there is no specific table in AS/NZS 3008 for DC resistance.</p>
+
+    <p>The voltage drop is calculated as:</p>
+    <p>\(\Delta V_{dc}=\dfrac{I L 2 R_c}{1000}\)</p>
+    <p>\(\Delta V_{dc}=\dfrac{1 \cdot 30 \cdot 2 \cdot 5.61}{1000}\)</p>
+    <p>\(\Delta V_{dc}=0.34 \, V\)</p>
+
+    The percentage voltage drop is calculated as:
+    <p>\(\% V_{dc}= \dfrac {0.34} {12} \cdot 100 \)</p>
+    <p>\(\% V_{dc}= 2.83 \, \% \)</p>
+
+</div>
+<!--End content div -->
+      <!-- End mainDiv-->
+    </div>
+
+    <!-- End pageGridDiv-->
+  </div>
+
+  <footer>
+  </footer>
+</body>
+
+</html>
+
+
+
+
+
+ 
+
+
+
+
+ 

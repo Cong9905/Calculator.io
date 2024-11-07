@@ -1,0 +1,2823 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cable size calculator for current rating, voltage drop, loop impedance, earth cable and short circuit, based on Australia and New Zealand standard AS/NZS 3008.">
+<meta name="author" content="Adam van Staden">
+<title>Cable Size Calculator AS/NZS 3008 | jCalc.net</title>
+
+<link rel="apple-touch-icon" sizes="57x57" href="https://www.jcalc.net/image/icon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://www.jcalc.net/image/icon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://www.jcalc.net/image/icon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://www.jcalc.net/image/icon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://www.jcalc.net/image/icon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://www.jcalc.net/image/icon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://www.jcalc.net/image/icon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://www.jcalc.net/image/icon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://www.jcalc.net/image/icon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://www.jcalc.net/image/icon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.jcalc.net/image/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="https://www.jcalc.net/image/icon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.jcalc.net/image/icon/favicon-16x16.png">
+<link rel="icon" type="image/x-icon" href="https://www.jcalc.net/image/icon/favicon.ico">
+<link rel="manifest" href="https://www.jcalc.net/image/icon/manifest.json">
+
+  <!-- LinkedIn -->
+  <meta property="og:type" content="Website">
+  <meta property="og:title" content="Cable Size Calculator AS/NZS 3008">
+  <meta property="og:image" content="https://www.jcalc.net/image/cable-sizing-calculator-as3008-icon.png">
+  <meta property="og:description" content="Cable size calculator for current rating, voltage drop, loop impedance, earth cable and short circuit, based on Australia and New Zealand standard AS/NZS 3008.">
+  <meta property="og:url" content="https://www.jcalc.net/cable-sizing-calculator-as3008">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.jcalc.net/cable-sizing-calculator-as3008"
+      },
+      "headline": "Cable Size Calculator AS/NZS 3008",
+      "datePublished": "2014-11-11T00:00:00",
+      "dateModified": "2014-11-11T00:00:00",
+      "author": {
+        "@type": "Person",
+        "name": "Adam van Staden"
+      },
+      "description": "Cable size calculator for current rating, voltage drop, loop impedance, earth cable and short circuit, based on Australia and New Zealand standard AS/NZS 3008.",
+      "image": "https://www.jcalc.net/image/cable-sizing-calculator-as3008-icon.png"
+    }
+  </script>
+
+
+<!-- MathJax -->
+
+  <script>
+    MathJax = {
+      loader: {
+        load: ['input/tex', 'output/chtml', 'ui/lazy']
+      },
+      tex: {
+        packages: ['base', 'ams']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async="" src="npm/mathjax%403/es5/startup.js">
+  </script>
+
+
+   <link rel="stylesheet" type="text/css" href="css/style.css?v=4">
+
+   <style>
+body {margin: 0px;}
+h1 {margin-bottom: 10px;}
+#page_description {font-size: 18px; margin-top: 0px;margin-bottom: 10px;}
+label {line-height:1; margin-top: 8px;margin-bottom: 8px;}
+.mainDiv {min-width: 1345px; max-width: 1366px;}
+.contentDiv {max-width:1366px;margin:auto;}
+.contentDiv {margin:0px;display:grid;grid-template-columns:800px auto;grid-column-gap:100px;grid-auto-flow:row dense;}
+#contentDivLeft  {grid-area: 1 / 1 / span 1 /span 1;}
+#contentDivRight  {grid-area: 1 / 2 / span 1 /span 1;}
+input:invalid {border: 2px solid red;}
+ul {padding-left:20px }
+h2 {font-size:24px;margin-top:20px;margin-bottom:15px; text-transform: capitalize; color: #0088CC;}
+h3 {font-size:18px;margin-top:10px;margin-bottom:5px}
+.calcForm input[type=text], input[type=number] {text-align:center; height: 40px;}
+.calcForm input[type=checkbox] {height:35px;width:35px;align-self:center;justify-self:end;} 
+.calcForm select {height: 40px;}
+.formHeading {text-align:left;font-weight:bold; }
+.resultsDiv {border-radius:5px;padding:5px;margin:0px;border: 1px #0088CC solid;}
+.rh {font-weight:bold;margin:0px;margin-left:5px;}
+.eq {font-size:16px;margin:6px;}
+.eq_step {font-size:16px; font-weight: bold;}
+.eq_small {font-size:14px;}
+.calcDiv {border-radius:5px;background-color:#f2f2f2;padding:8px;margin:0px;margin-bottom:10px;}
+.resultsTable {border-collapse:collapse;border:none;margin:0px;table-layout: fixed}
+.resultsTable td {border-bottom:1px solid #ddd;padding-top:10px;padding-bottom:10px;line-height:1;}
+.resultsTable tr td:nth-child(1) {text-align:left;width:100%}
+.resultsTable tr td:nth-child(2) {text-align:left;min-width:120px;white-space:nowrap;}
+.chartTable  {border-collapse:collapse;width:100%;}
+.chartTable th {border:none;font-size:12px;line-height:1;padding:2px}
+.chartTable th, td {border-bottom:1px solid #ddd;padding:2px;text-align:center;}
+.chartTable td {font-size:18px}
+.chartTable input[type=radio] {margin: 2px;}
+.chartTableCompact  {border-collapse:collapse;width:100%;}
+.chartTableCompact th {border:none;font-size:10px;line-height:1;padding:2px}
+.chartTableCompact th, td {border-bottom:1px solid #ddd;padding:2px;text-align:center;}
+.chartTableCompact td {font-size:15px}
+.chartTableCompact input[type=radio] {margin: 1px;}
+.visibleRow { display:none;}
+.visCol_1 { display:table-cell;}
+.visCol_2 { display:none;}
+.showMore { display:none; }
+.goodValue { background-color:#D0F0C0;}
+.badValue {background-color:pink;}
+.normalValue {background-color:inherit;}
+.formError {font-size: 16px; margin: 0px; color: red;}
+.formWarning {font-size: 16px; margin: 0px; color: orange;}
+.formInfo {font-size: 16px; margin: 0px; color: darkgreen;}
+.reference {font-size: 14px;}
+.parameterInfo, .headingInfo {border: 1px solid #A0A0A0; color: #A0A0A0;padding: 1px 6px 1px 6px;border-radius: 4px;text-decoration: none;font-weight: bold; font-size: 16px; margin-right: 5px;margin-left: 5px;}
+.headingInfo:hover, .parameterInfo:hover {border: 2px solid black;color: black;} 
+
+#numberOfCablesLabel {line-height:0.8 }
+#selectedSizeId, #numberOfCables, #selectedEarthSizeId, #numberOfEarthCables {text-align-last:center}
+#deratingTable tr td:nth-child(2) {min-width: fit-content; max-width:fit-content; text-align: center;font-size: 17px;}
+#deratingTable tr td:nth-child(3) {min-width: fit-content; max-width:fit-content; text-align: center;}
+
+/* Content */
+#cableTypeTable, #voltDropOptionsTable1, #voltDropOptionsTable2   {margin-top: 8px;margin-bottom: 8px;}
+#cableTypeTable, #voltDropCalcTableSpecified  {font-size: 18px;}
+#voltDropOptionsTable1, #voltDropOptionsTable2, td, #resistanceTable td:nth-child(2), #numberOfEarthCablesInfo td:nth-child(2), #checkLoopImpedanceTable td:nth-child(2), #protectionTable td:nth-child(2) {text-align: left}
+#cableTypeTable tr td:first-child {text-align:left;}
+#cableTypeTable {max-width:600px;}
+#insulationTablePopular td, #insulationTableSpecialXLPE td {text-align: left; font-size: 18px;}
+#insulationTableSpecialPVC td {text-align: left; font-size: 16px;}
+#installationTable td:first-child {text-align: left; vertical-align: top; padding: 0px;}
+#installationTable td:nth-child(2) {text-align: left; vertical-align: top; }
+#resistanceTable p {margin-top: 8px; margin-bottom: 8px;}
+#insulationTable td, th {padding: 3px}
+#contentDivLeft th  {text-align: center; background-color: #f2f2f2; font-weight: normal;color: black;}
+#contentDivLeft td  {background-color:white;color: black;}
+.imageBorder {border: 1px solid #ddd; padding: 30px; border-radius: 8px; width: fit-content;}
+#backButton {background-color: #0088CC;color: white;padding: 10px;margin: 0px;border: none;cursor: pointer;font-size: 20px;width: 150px;border-radius: 4px;}
+#backButton {display: none;position: sticky; position: -webkit-sticky; bottom: 5px; float:right}
+.parameterList {list-style-type:none; padding: 0px;margin:0px}
+.parameterList li {margin-bottom: 10px;margin-top: 10px;text-align: justify;}
+.important {color: green; font-weight: bold;}
+
+.showMoreButton, #showMoreCablesButton, #showLessCablesButton, #showFaultRatingButton, #hideFaultRatingButton, #copyCSVToClipBoardButton 
+{background-color:#f2f2f2;color:black;padding:10px 10px;margin:6px 0px 0px 0px;border:1px solid #ddd;cursor:pointer;font-size:18px;width:100%;border-radius:4px;display:inline-block;}
+
+#generateReportButton, #listReportsButton, #resetButton, #calculateButton {margin-bottom:0px;}
+#generateReportButton, #showCalcsButton {background-color:green;}
+
+#installationContainer {border: 1px solid #ccc;margin-top:5px;margin-bottom:5px;border-radius:4px;background-color:#FFFFFF;cursor:pointer;}
+#installationImage {vertical-align:middle;}
+#installationDescription {margin:0px;line-height:1.2}
+#installationArrow {text-align:center;}
+.arrow {border: solid black;border-width: 0 2px 2px 0;display: inline-block;padding: 3px;  transform: rotate(45deg);-webkit-transform: rotate(45deg);}
+
+
+#installationGrid 	  	  {display: grid;grid-gap:0px;grid-template-columns:100px 5px auto 5px 20px;grid-template-rows: auto;}
+#installationImage        {grid-area: 1 / 1 / span 1 /span 1;}
+#installationDescription  {grid-area: 1 / 3 / span 1 /span 1;}
+#installationArrow     	  {grid-area: 1 / 5 / span 1 /span 1;}
+
+.inputWithUnitGrid 	  	  {display: grid;grid-gap:0px;grid-template-columns:auto;grid-template-rows: auto; vertical-align: middle;}
+.inputValue 	  	      {grid-area: 1 / 1 / span 1 / span 1;display: block; padding-right: 38px !important;text-align: right !important;}
+.inputUnit				  {grid-area: 1 / 1 / span 1 / span 1;display: block; justify-self: end;align-self: center; padding-right: 8px;}
+
+#phaseId {text-align-last: center;}
+#voltageId {text-align-last:center;}
+#loadUnitId {text-align-last: center;}
+#deratingImage {margin: auto;}
+
+#numberOfCircuits:hover + #numberOfCircuitsTip {
+	 display: block;	
+	 }
+
+	 #numberOfCircuitsTip { border: solid 1px gray; background-color: #ddd;}
+
+.formGrid {margin:0px;display:grid;grid-template-columns:140px 90px 90px 20px 140px 100px 80px 20px 165px 65px 100px 20px auto 85px 40px;grid-column-gap:0px;align-items:center;grid-auto-flow:row dense;}
+
+:root {--c1:1; --c2:2; --c3:3; --c5:5; --c6:6; --c7:7; --c9:9; --c10:10; --c11:11; --c13:13; --c14:14; --c15:15;}
+
+
+/* STANDARD */
+#standardHeadingLabel  	    {grid-area: auto / var(--c1) / span 1 / span 3;display: block;}
+#standardId           		{grid-area: auto / var(--c1) / span 1 / span 3;display: block;}
+
+/* LOAD */
+#loadHeadingLabel 	        {grid-area: auto / var(--c1) / span 1 / span 3;display: none;}
+#phaseLabel      	        {grid-area: auto / var(--c1) / span 1 / span 1;display: none;}
+#phaseId      	        	{grid-area: auto / var(--c2) / span 1 / span 2;display: none;}
+#voltageLabel      	        {grid-area: auto / var(--c1) / span 1 / span 2;display: none;}
+#voltageId      	        {grid-area: auto / var(--c3) / span 1 / span 1;display: none;}
+#otherVoltageLabel          {grid-area: auto / var(--c1) / span 1 / span 2;display: none;}
+#otherVoltageContainer      {grid-area: auto / var(--c3) / span 1 / span 1;display: none;}
+#ratingLabel      	        {grid-area: auto / var(--c1) / span 1 / span 1;display: none;}
+#load 		 	    		{grid-area: auto / var(--c2) / span 1 / span 1;display: none;}
+#loadUnitId 	 	    	{grid-area: auto / var(--c3) / span 1 / span 1;display: none;}
+#pfLabel 		 	    	{grid-area: auto / var(--c1) / span 1 / span 2;display: none;}
+#pf 		 	    		{grid-area: auto / var(--c3) / span 1 / span 1;display: none;}
+
+/* VOLTAGE DROP */
+#voltdropHeadingLabel 					{grid-area: auto / var(--c1) / span 1 / span 3;display: none;}
+#requiredVoltdropPercLabel  			{grid-area: auto / var(--c1) / span 1 / span 2;display: none;}
+#requiredVoltdropPercId		 			{grid-area: auto / var(--c3) / span 1 / span 1;display: none;}
+#otherRequiredVoltdropPercLabel  		{grid-area: auto / var(--c1) / span 1 / span 2;display: none;}
+#otherRequiredVoltdropPercContainer 	{grid-area: auto / var(--c3) / span 1 / span 1;display: none;}
+#showVoltdropOptionsLabel				{grid-area: auto / var(--c1) / span 1 / span 2;display: none;}
+#showVoltdropOptions 					{grid-area: auto / var(--c3) / span 1 / span 1;display: none;}
+#conductorTemperatureTypeLabel 			{grid-area: auto / var(--c1) / span 1 / span 1;display: none;}
+#conductorTemperatureTypeId 			{grid-area: auto / var(--c2) / span 1 / span 2;display: none;}
+#loadPowerFactorTypeLabel				{grid-area: auto / var(--c1) / span 1 / span 1;display: none;}
+#loadPowerFactorTypeId 					{grid-area: auto / var(--c2) / span 1 / span 2;display: none;}
+#distanceLabel 			    			{grid-area: auto / var(--c1) / span 1 / span 2;display: none;}
+#distanceContainer						{grid-area: auto / var(--c3) / span 1 / span 1;display: none;}
+
+/* CABLE */ 
+#cableTypeLabel			    {grid-area:  auto / var(--c5) / span 1 / span 3;display: none;}
+#cableTypeId           	    {grid-area:  auto / var(--c5) / span 1 / span 3;display: none;}
+#insulationLabel			{grid-area:  auto / var(--c5) / span 1 / span 3;display: none;}
+#insulationId      	    	{grid-area:  auto / var(--c5) / span 1 / span 3;display: none;}
+#isFlexibleLabel      	    {grid-area:  auto / var(--c5) / span 1 / span 2;display: none;}
+#isFlexible      	    	{grid-area:  auto / var(--c7) / span 1 / span 1;display: none;}
+#conductorLabel  	    	{grid-area:  auto / var(--c5) / span 1 / span 1;display: none;} 
+#conductorId 		 	    {grid-area:  auto / var(--c6) / span 1 / span 2;display: none;}
+#selectedSizeLabel  	    {grid-area:  auto / var(--c5) / span 1 / span 2;display: none;}
+#selectedSizeId 		 	{grid-area:  auto / var(--c7) / span 1 / span 1;display: none;}
+#showParallelCablesLabel    {grid-area:  auto / var(--c5) / span 1 / span 2;display: none;}
+#showParallelCables         {grid-area:  auto / var(--c7) / span 1 / span 1;display: none;}
+#numberOfCablesLabel 	    {grid-area:  auto / var(--c5) / span 1 / span 2;display: none;}
+#numberOfCables      	    {grid-area:  auto / var(--c7) / span 1 / span 1;display: none;}
+
+/* EARTH CABLE */ 
+#earthCableHeadingLabel	    {grid-area:  auto / var(--c5) / span 1 / span 3;display: none;}
+#earthInsulationLabel		{grid-area:  auto / var(--c5) / span 1 / span 3;display: none;}
+#earthInsulationId         	{grid-area:  auto / var(--c5) / span 1 / span 3;display: none;}
+#earthIsFlexibleLabel       {grid-area:  auto / var(--c5) / span 1 / span 2;display: none;}
+#earthIsFlexible      	   	{grid-area:  auto / var(--c7) / span 1 / span 1;display: none;}
+#earthCoreLabel      	    {grid-area:  auto / var(--c5) / span 1 / span 3;display: none;}
+#earthConductorLabel  		{grid-area:  auto / var(--c5) / span 1 / span 1;display: none;}
+#earthConductorId 			{grid-area:  auto / var(--c6) / span 1 / span 2;display: none;}
+#selectedEarthSizeLabel  	{grid-area:  auto / var(--c5) / span 1 / span 2;display: none;}
+#selectedEarthSizeId 	  	{grid-area:  auto / var(--c7) / span 1 / span 1;display: none;}
+#numberOfEarthCablesLabel   {grid-area:  auto / var(--c5) / span 1 / span 2;display: none;}
+#numberOfEarthCables        {grid-area:  auto / var(--c7) / span 1 / span 1;display: none;}
+
+/* INSTALLATION */
+#installationHeadingLabel	{grid-area: auto / var(--c9)  / span 1 /span 3;display: none;}
+#formationLabel	          	{grid-area: auto / var(--c9)  / span 1 /span 1;display: none;}
+#formationId 		        {grid-area: auto / var(--c10) / span 1 /span 2;display: none;}
+#installationContainer      {grid-area: auto / var(--c9)  / span 2 /span 3;display: none;}
+
+
+/* DERATING */
+#showDeratingOptionsLabel   {grid-area: auto / var(--c9)  / span 1 /span 2;display: block;}
+#showDeratingOptions		{grid-area: auto / var(--c11) / span 1 /span 1;display: block;}
+#supportId         			{grid-area: auto / var(--c9)  / span 1 /span 3;display: none;}
+#numberOfCircuitsLabel      {grid-area: auto / var(--c9)  / span 1 /span 2;display: none;}
+#numberOfCircuits      		{grid-area: auto / var(--c11) / span 1 /span 1;display: none;}
+#spacingLabel			 	{grid-area: auto / var(--c9)  / span 1 /span 1;display: none;}
+#spacingId 		         	{grid-area: auto / var(--c10) / span 1 /span 2;display: none;}
+#numberOfTiersLabel			{grid-area: auto / var(--c9)  / span 1 /span 2;display: none;}
+#numberOfTiers              {grid-area: auto / var(--c11) / span 1 /span 1;display: none;}
+#deratingImage              {grid-area: auto / var(--c9)  / span  /span 3;display: none;}
+#airTemperatureLabel		{grid-area: auto / var(--c9)  / span 1 /span 2;display: none;}
+#airTemperatureId			{grid-area: auto / var(--c11) / span 1 /span 1;display: none;}
+#cableDepthLabel		    {grid-area: auto / var(--c9)  / span 1 /span 2;display: none;}
+#cableDepthId				{grid-area: auto / var(--c11) / span 1 /span 1;display: none;}
+#soilTemperatureLabel		{grid-area: auto / var(--c9)  / span 1 /span 2;display: none;}
+#soilTemperatureId			{grid-area: auto / var(--c11) / span 1 /span 1;display: none;}
+#soilResistivityLabel		{grid-area: auto / var(--c9)  / span 1 /span 2;display: none;}
+#soilResistivityId			{grid-area: auto / var(--c11) / span 1 /span 1;display: none;}
+
+
+/* PROTECTION */
+#protectionHeadingLabel	  	 	{grid-area: auto / var(--c13) / span 1 /span 3;display: none;}
+#checkFaultRatingLabel	 		{grid-area: auto / var(--c13) / span 1 /span 2;display: none;}
+#checkFaultRating		 		{grid-area: auto / var(--c15) / span 1 /span 1;display: none;}
+#checkLoopImpedanceLabel 		{grid-area: auto / var(--c13) / span 1 /span 2;display: none;}
+#checkLoopImpedance		 		{grid-area: auto / var(--c15) / span 1 /span 1;display: none;}
+#protectionLabel	 			{grid-area: auto / var(--c13) / span 1 /span 1;display: none;}
+#protectionId			 		{grid-area: auto / var(--c14) / span 1 /span 2;display: none;}
+#mcbCurveLabel		 			{grid-area: auto / var(--c13) / span 1 /span 1;display: none;}
+#mcbCurveId 			 		{grid-area: auto / var(--c14) / span 1 /span 2;display: none;}
+#mcbRatingLabel		 			{grid-area: auto / var(--c13) / span 1 /span 1;display: none;}
+#mcbRatingId 			 		{grid-area: auto / var(--c14) / span 1 /span 2;display: none;}
+
+/* generic */
+#sourceImpedanceTypeLabel   		{grid-area: auto / var(--c13) / span 1 /span 1;display: none;}
+#sourceImpedanceTypeId 				{grid-area: auto / var(--c14) / span 1 /span 2;display: none;}
+#sourceImpedanceLabel   			{grid-area: auto / var(--c13) / span 1 /span 1;display: none;}
+#sourceImpedanceContainer			{grid-area: auto / var(--c14) / span 1 /span 2;display: none;}
+#isFaultLimitingLabel	 			{grid-area: auto / var(--c13) / span 1 /span 1;display: none;}
+#isFaultLimiting		 			{grid-area: auto / var(--c14) / span 1 /span 2;display: none;}
+#faultLabel 						{grid-area: auto / var(--c13) / span 1 /span 2;display: none;}
+#faultCurrentLabel 					{grid-area: auto / var(--c13) / span 1 /span 1;display: none;}
+#faultCurrentContainer	    		{grid-area: auto / var(--c14) / span 1 /span 2;display: none;}
+#faultCurrentPickupLabel 			{grid-area: auto / var(--c13) / span 1 /span 1;display: none;}
+#faultCurrentPickupContainer		{grid-area: auto / var(--c14) / span 1 /span 2;display: none;}
+#faultTimeLabel 		 			{grid-area: auto / var(--c13) / span 1 /span 1;display: none;}
+#faultTimeContainer		 	    	{grid-area: auto / var(--c14) / span 1 /span 2;display: none;}
+#faultEnergyLabel 		 			{grid-area: auto / var(--c13) / span 1 /span 1;display: none;}
+#faultEnergyContainer				{grid-area: auto / var(--c14) / span 1 /span 2;display: none;}
+#earthFaultLabel 					{grid-area: auto / var(--c13) / span 1 /span 2;display: none;}
+#earthFaultCurrentLabel 			{grid-area: auto / var(--c13) / span 1 /span 1;display: none;}
+#earthFaultCurrentContainer	    	{grid-area: auto / var(--c14) / span 1 /span 2;display: none;}
+#earthFaultCurrentPickupLabel 		{grid-area: auto / var(--c13) / span 1 /span 1;display: none;}
+#earthFaultCurrentPickupContainer	{grid-area: auto / var(--c14) / span 1 /span 2;display: none;}
+#earthFaultTimeLabel 		 		{grid-area: auto / var(--c13) / span 1 /span 1;display: none;}
+#earthFaultTimeContainer			{grid-area: auto / var(--c14) / span 1 /span 2;display: none;}
+#earthFaultEnergyLabel 		 		{grid-area: auto / var(--c13) / span 1 /span 1;display: none;}
+#earthFaultEnergyContainer			{grid-area: auto / var(--c14) / span 1 /span 2;display: none;}
+
+
+/* OPTIONS */
+#showCalcsLabel         {grid-area: auto / var(--c13) / span 1 /span 2;display: none;}
+#showCalcs				{grid-area: auto / var(--c15) / span 1 /span 1;display: none;}
+
+
+/* BUTTONS */
+#listReportsButton       	{grid-area: 18 / var(--c1) / span 1 /span 3;display: none;}
+#generateReportButton       {grid-area: 18 / var(--c5) / span 1 /span 3;display: none;}
+#resetButton                {grid-area: 18 / var(--c9) / span 1 /span 3;display: none;}
+#calculateButton	 	    {grid-area: 18 / var(--c13) / span 1 /span 3;display: none;}
+
+/* RESULTS DATA */
+#results-grid-div {
+		display:grid;
+		grid-gap:5px;
+		grid-template-columns:auto 338px 338px 338px;
+		grid-template-rows: auto;
+		margin-top:0px;
+		}
+
+	  
+/* HIDDEN */
+#results-csv-data {display: none;}
+
+
+@media screen and (max-width:1023px) {
+
+	.calcForm input[type=text], input[type=number] {height: 50px;}
+	.calcForm input[type=checkbox] {height:40px;width:40px;} 
+	.calcForm select {height: 50px;}
+
+	#loadUnitId {max-width:100px;}
+
+	.contentDiv {grid-template-columns: auto;}
+	#phaseTable {font-size: 18px;}
+	#contentDivLeft, #contentDivRight {grid-area: auto / 1}
+	.mainDiv {min-width: unset; width:auto;}
+
+	.formGrid    {grid-template-columns:auto 80px 100px;grid-template-rows: auto;}
+	.calcDiv     {padding:5px;}
+	.imageBorder {padding: 5px; }
+	#results-grid-div {
+		grid-template-columns:auto;
+		grid-template-rows:auto;}
+	:root {--c1:1; --c2:2; --c3:3; --c5:1; --c6:2; --c7:3; --c9:1; --c10:2; --c11:3; --c13:1; --c14:2; --c15:3;}
+
+	/* BUTTONS */
+	#generateReportButton, #listReportsButton, #reportForm, #resetButton, #calculateButton  {grid-row: auto}
+
+	/* RESULTS */
+	#results-loadValue, 
+	#results-cable, 
+	#results-active-rating, 
+	#results-impedance-active,
+	#results-voltdrop, 
+	#results-impedance-earth, 
+	#results-all-cables, 
+	#results-derating, 
+	#results-protection 
+			{grid-area: auto / auto / span 1 / span 1;}
+	
+}
+</style>
+   <script>
+   window.addEventListener("DOMContentLoaded", displayAll);
+   window.addEventListener("keyup", keyPressed);
+
+   const TRIP_UNIT_ID_AUTO = 0;
+   const TRIP_UNIT_TYPE_NSX_TMD = 1;
+   const TRIP_UNIT_TYPE_NSX_MICRO_LOGIC_2_3 = 3;
+   const TRIP_UNIT_TYPE_NS_MICRO_LOGIC_2_0 = 4;
+
+
+   //TODO. Resolve Constants in php to reduce JavaScript file size and processing.
+
+   const VOLTAGE_OTHER = 111;
+   const VOLTDROP_REQUIRED_OTHER = 111;
+   const VOLTDROP_METHOD_WORSE_CASE = 1;
+   const VOLTDROP_METHOD_ACCURATE = 2;
+
+   const INSTALLATION_AIR_SPACED = 1;
+   const INSTALLATION_AIR_SPACED_FROM_SURFACE = 2;
+   const INSTALLATION_AIR_TOUCHING_SURFACE = 3;
+   const INSTALLATION_AIR_EXPOSED_TO_SUN = 4;
+   const INSTALLATION_AIR_ENCLOSURE = 5;
+   const INSTALLATION_THERMAL_PARTIAL_IN_ENCLOSURE = 7;
+   const INSTALLATION_THERMAL_PARTIAL_NO_ENCLOSURE = 8;
+   const INSTALLATION_THERMAL_COMPLETE_IN_ENCLOSURE = 10;
+   const INSTALLATION_THERMAL_COMPLETE_NO_ENCLOSURE = 11;
+   const INSTALLATION_UNDERGROUND_BURIED_DIRECT = 12;
+   const INSTALLATION_UNDERGROUND_ENCLOSURE = 13;
+   const INSTALLATION_UNDERGROUND_ENCLOSURE_COMBINED = 14;
+   const INSTALLATION_UNDERGROUND_ENCLOSURE_SEPARATE = 15;
+
+   const CONDUCTOR_COPPER = 1;
+
+   const CABLE_TWO_CORE = 1;
+   const CABLE_THREE_CORE = 2;
+   const CABLE_TWO_SINGLE_CORE = 3;
+   const CABLE_THREE_SINGLE_CORE = 4;
+   const CABLE_FOUR_CORE = 5;
+   const CABLE_FOUR_SINGLE_CORE = 6;
+   const CABLE_TWO_CORE_MAINS = 7;
+   const CABLE_FOUR_CORE_MAINS = 8;
+   const CABLE_TWO_SINGLE_CORE_MAINS = 9;
+   const CABLE_FOUR_SINGLE_CORE_MAINS = 10;
+   const CABLE_THREE_SINGLE_CORE_MAINS = 11;
+
+   const COMMON_CABLE_SINGLE_CORE = 1;
+   const COMMON_CABLE_MULTI_CORE = 2;
+
+   const PROTECTION_CURRENT_AND_TIME = 1;
+   const PROTECTION_MCB = 2;
+   const PROTECTION_MCCB = 3;
+
+   const IMPEDANCE_SOURCE_ESTIMATE = 1;
+   const IMPEDANCE_SOURCE_CALCULATE = 2;
+   const IMPEDANCE_SOURCE_MEASURED = 3;
+
+   const SUPPORT_CATENERARY_WIRE = 1;
+   const SUPPORT_LADDER_OR_RACK = 2;
+   const SUPPORT_BUNCHED_WITH_CATENERARY_WIRE = 3;
+   const SUPPORT_UNPERFORRATED_TRAYS = 4;
+   const SUPPORT_PERFORRATED_TRAY = 5;
+   const SUPPORT_VERTICAL_PERFORRATED_TRAY = 6;
+   const SUPPORT_BUNCHED_ON_SURFACE = 7;
+   const SUPPORT_ONE_VERTICAL_LAYER_WALL = 8;
+   const SUPPORT_ONE_LAYER_UNDER_CEILING = 9;
+   const SUPPORT_BUNCHED_IN_ENCLOSURE = 10;
+   const SUPPORT_UNENCLOSED = 11;
+   const SUPPORT_BURIED_DIRECT = 12;
+   const SUPPORT_ONE_CABLE_PER_ENCLOSURE = 13;
+   const SUPPORT_ONE_CIRCUIT_PER_ENCLOSURE = 14;
+
+   const SPACING_TOUCHING = 3;
+
+   const PHASE_THREE = 1;
+   const PHASE_SINGLE = 2;
+   const PHASE_DC = 3;
+
+   const LOAD_UNIT_KW = 1;
+   const LOAD_UNIT_KVA = 2;
+   const LOAD_UNIT_A = 3;
+   const LOAD_UNIT_HP = 4;
+
+   const CONDUCTOR_TEMP_MAXIMUM = 1;
+   const CONDUCTOR_TEMP_CALCULATED = 2;
+
+   const LOAD_PF_WORSE_CASE = 1;
+   const LOAD_PF_SPECIFIED = 2;
+
+   const SOIL_TEMP_15 = 2;
+   const SOIL_TEMP_25 = 4;
+
+   const AIR_TEMP_30 = 4;
+   const AIR_TEMP_40 = 6;
+
+   const CABLE_DEPTH_050 = 1;
+
+   const SOIL_RESISTIVITY_1_2 = 4;
+
+   const FORM_STATE_READY = 1;
+   const FORM_STATE_CHANGED = 2;
+
+   const STANDARD_AS3008_AU = 1;
+   const STANDARD_AS3008_NZ = 2;
+
+   const SIZE_AUTO = 111;
+
+   function displayAll() {
+      displayLoadOptions();
+      displayVoltdropOptions();
+      displayCableOptions();
+      displayInstallationOptions();
+      displayProtectionOptions();
+      displayButtons();
+      setScrollPosition();
+      addFormEventListeners();
+      addContentEventListeners();
+   }
+
+   function calculate1() {
+
+      formState = getFormState();
+
+      //Temp to find error
+      checkAndSetFormStateErrors(formState, "calculate1");
+
+      if (formState == FORM_STATE_READY) {
+         var calcForm = document.getElementById('calcForm');
+         if (calcForm.checkValidity() == false) {
+            calcForm.reportValidity();
+         } else {
+            var scrollPosition = window.pageYOffset;
+            document.getElementById("scrollPosition").value = scrollPosition;
+            document.getElementById("action").value = 'calculate';
+            document.getElementById("calcForm").submit();
+         }
+      } else {
+         changeSelect('invalidFormState');
+      }
+   }
+
+   function changeSelect(id) {
+
+      //Todo: Move all this code to action on server
+
+      //Temp Just to find error
+      if (id != "invalidFormState") {
+         formState = getFormState();
+         checkAndSetFormStateErrors(formState, "changeSelect");
+      }
+      //Temp ends
+
+      setFormState(FORM_STATE_CHANGED);
+
+      var calcForm = document.getElementById('calcForm');
+
+      if (id == "phaseId" || id == "voltageId") {
+         document.getElementById('voltage').required = false;
+      } else if (id == "invalidFormState") {
+         document.getElementById('voltage').required = false;
+      } else if (id == "showParallelCables") {
+         var showParallelCables = document.getElementById('showParallelCables').checked;
+         if (showParallelCables) {
+            document.getElementById('showDeratingOptions').checked = true;
+         } else {
+            document.getElementById("numberOfCables").value = 1;
+            document.getElementById("numberOfEarthCables").value = 1;
+            var showDeratingOptions = document.getElementById('showDeratingOptions').checked;
+            if (showDeratingOptions) {
+               document.getElementById('numberOfCircuits').value = 1;
+            }
+         }
+      } else if (id == "numberOfCables") {
+         var showDeratingOptions = document.getElementById('showDeratingOptions').checked;
+         if (showDeratingOptions) {
+            var numberOfCables = document.getElementById('numberOfCables').value;
+            document.getElementById('numberOfCircuits').value = numberOfCables;
+         }
+      } else if (id == "showDeratingOptions") {
+         var showDeratingOptions = document.getElementById('showDeratingOptions').checked;
+         var standardId = document.getElementById('standardId').value;
+         if (!showDeratingOptions) {
+            document.getElementById('supportId').value = SUPPORT_BUNCHED_IN_ENCLOSURE;
+            document.getElementById('numberOfCircuits').value = 1;
+            document.getElementById('spacingId').value = SPACING_TOUCHING;
+            document.getElementById('numberOfTiers').value = 1;
+            document.getElementById('soilResistivityId').value = SOIL_RESISTIVITY_1_2;
+            document.getElementById('cableDepthId').value = CABLE_DEPTH_050;
+            if (standardId == STANDARD_AS3008_AU) {
+               document.getElementById('soilTemperatureId').value = SOIL_TEMP_25;
+               document.getElementById('airTemperatureId').value = AIR_TEMP_40;
+            } else {
+               document.getElementById('soilTemperatureId').value = SOIL_TEMP_15;
+               document.getElementById('airTemperatureId').value = AIR_TEMP_30;
+            }
+         }
+      } else if (id == "checkFaultRating") {
+         var checkFaultRating = document.getElementById('checkFaultRating').checked;
+         var isFaultLimiting = document.getElementById('isFaultLimiting').checked;
+         if (!checkFaultRating) {
+            document.getElementById('isFaultLimiting').checked = false;
+         }
+      } else if (id == "showVoltdropOptions") {
+         var showVoltdropOptions = document.getElementById('showVoltdropOptions').checked;
+         var conductorTemperatureTypeId = document.getElementById('conductorTemperatureTypeId');
+         var loadPowerFactorTypeId = document.getElementById('loadPowerFactorTypeId');
+         if (!showVoltdropOptions) {
+            conductorTemperatureTypeId.value = CONDUCTOR_TEMP_CALCULATED;
+            loadPowerFactorTypeId.value = LOAD_PF_WORSE_CASE;
+         }
+      } else if (id == "standardId") {
+         var standardId = document.getElementById('standardId').value;
+         if (standardId == STANDARD_AS3008_AU) {
+            document.getElementById('soilTemperatureId').value = SOIL_TEMP_25;
+            document.getElementById('airTemperatureId').value = AIR_TEMP_40;
+         } else {
+            document.getElementById('soilTemperatureId').value = SOIL_TEMP_15;
+            document.getElementById('airTemperatureId').value = AIR_TEMP_30;
+         }
+      } else if (id == "cableTypeId") {
+         var cableTypeId = document.getElementById('cableTypeId').value;
+         var requiredVoltdropPerc = document.getElementById('requiredVoltdropPerc').value;
+         if (requiredVoltdropPerc > 2 && (
+               cableTypeId == CABLE_TWO_SINGLE_CORE_MAINS ||
+               cableTypeId == CABLE_TWO_CORE_MAINS ||
+               cableTypeId == CABLE_FOUR_SINGLE_CORE_MAINS ||
+               cableTypeId == CABLE_FOUR_CORE_MAINS ||
+               cableTypeId == CABLE_THREE_SINGLE_CORE_MAINS
+            )) {
+            document.getElementById('requiredVoltdropPerc').value = 2;
+            document.getElementById('requiredVoltdropPercId').value = '2.0';
+         }
+      }
+
+      if (calcForm.checkValidity() == false) {
+         calcForm.reportValidity();
+      } else {
+         var scrollPosition = window.pageYOffset;
+         document.getElementById("scrollPosition").value = scrollPosition;
+         document.getElementById("action").value = 'changeSelect';
+         document.getElementById("calcForm").submit();
+      }
+   }
+
+   function selectCable(value) {
+      var calcForm = document.getElementById('calcForm');
+      if (calcForm.checkValidity() == false) {
+         calcForm.reportValidity();
+      } else {
+         var scrollPosition = window.pageYOffset;
+         document.getElementById("scrollPosition").value = scrollPosition;
+         document.getElementById("selectedSizeId").value = value;
+         document.getElementById("action").value = 'calculate';
+         document.getElementById("calcForm").submit();
+      }
+   }
+
+   function selectInstallation() {
+      var calcForm = document.getElementById('calcForm');
+      if (calcForm.checkValidity() == false) {
+         calcForm.reportValidity();
+      } else {
+         var scrollPosition = window.pageYOffset;
+         document.getElementById("scrollPosition").value = scrollPosition;
+         document.getElementById("action").value = 'selectInstallation';
+         document.getElementById("calcForm").submit();
+      }
+   }
+
+
+
+   function resetSession() {
+      document.getElementById("action").value = 'resetSession';
+      document.getElementById("calcForm").submit();
+   }
+
+   function generateReport() {
+      var scrollPosition = window.pageYOffset;
+      document.getElementById("scrollPosition").value = scrollPosition;
+      document.getElementById("action").value = "generateReport";
+      document.getElementById("calcForm").submit();
+   }
+
+   function listReports() {
+      document.getElementById("action").value = "listReports";
+      document.getElementById("calcForm").submit();
+   }
+
+   function setScrollPosition(e) {
+      scrollPosition = document.getElementById("scrollPosition").value;
+      window.scrollTo(0, scrollPosition);
+   }
+
+   function displayLoadOptions() {
+
+      var voltageId = document.getElementById('voltageId');
+      var voltage = document.getElementById('voltage');
+      var voltageUnitLabel = document.getElementById('voltageUnitLabel');
+      var loadUnitId = document.getElementById("loadUnitId").value;
+      var loadPowerFactorTypeId = document.getElementById("loadPowerFactorTypeId").value;
+      var phaseId = document.getElementById("phaseId").value;
+
+      placeGridItem("loadHeadingLabel");
+      placeGridItem("phaseLabel");
+      placeGridItem("phaseId");
+      placeGridItem("voltageLabel");
+      placeGridItem("voltageId");
+      if (voltageId.value == VOLTAGE_OTHER) {
+         placeGridItem("otherVoltageLabel");
+         placeGridItem("otherVoltageContainer", null, "grid");
+      }
+
+      placeGridItem("ratingLabel");
+      placeGridItem("load");
+      placeGridItem("loadUnitId");
+      if ((loadUnitId == LOAD_UNIT_KW || loadUnitId == LOAD_UNIT_HP || loadPowerFactorTypeId == LOAD_PF_SPECIFIED) && phaseId != PHASE_DC) {
+         placeGridItem("pfLabel");
+         placeGridItem("pf");
+      }
+
+   }
+
+
+   function displayVoltdropOptions() {
+
+      var showVoltdropOptions = document.getElementById("showVoltdropOptions").checked;
+      var phaseId = document.getElementById("phaseId").value;
+      var requiredVoltdropPercId = document.getElementById("requiredVoltdropPercId");
+
+      placeGridItem("voltdropHeadingLabel");
+      placeGridItem("requiredVoltdropPercLabel");
+      placeGridItem("requiredVoltdropPercId");
+      if (requiredVoltdropPercId.value == VOLTDROP_REQUIRED_OTHER) {
+         placeGridItem("otherRequiredVoltdropPercLabel");
+         placeGridItem("otherRequiredVoltdropPercContainer", null, "grid");
+      }
+      placeGridItem("distanceLabel");
+      placeGridItem("distanceContainer", null, "grid");
+      placeGridItem("showVoltdropOptionsLabel");
+      placeGridItem("showVoltdropOptions");
+
+      if (showVoltdropOptions) {
+         placeGridItem("conductorTemperatureTypeLabel");
+         placeGridItem("conductorTemperatureTypeId");
+         if (phaseId != PHASE_DC) {
+            placeGridItem("loadPowerFactorTypeLabel");
+            placeGridItem("loadPowerFactorTypeId");
+         }
+      }
+   }
+
+
+   function displayProtectionOptions() {
+
+      var protectionId = document.getElementById('protectionId').value;
+      var checkFaultRating = document.getElementById('checkFaultRating').checked;
+      var checkLoopImpedance = document.getElementById('checkLoopImpedance').checked;
+      var sourceImpedanceTypeId = document.getElementById('sourceImpedanceTypeId').value;
+      var isFaultLimiting = document.getElementById('isFaultLimiting').checked;
+
+      placeGridItem("protectionHeadingLabel");
+      placeGridItem("checkFaultRatingLabel");
+      placeGridItem("checkFaultRating");
+      placeGridItem("checkLoopImpedanceLabel");
+      placeGridItem("checkLoopImpedance");
+
+
+      //protectionId
+      if (checkFaultRating || checkLoopImpedance) {
+         placeGridItem("protectionLabel");
+         placeGridItem("protectionId");
+      }
+
+
+      //mcb	 
+      if (protectionId == PROTECTION_MCB && (checkFaultRating || checkLoopImpedance)) {
+
+         placeGridItem("mcbCurveLabel");
+         placeGridItem("mcbCurveId");
+         placeGridItem("mcbRatingLabel");
+         placeGridItem("mcbRatingId");
+
+         if (checkLoopImpedance) {
+            placeGridItem("sourceImpedanceTypeLabel");
+            placeGridItem("sourceImpedanceTypeId");
+            if (sourceImpedanceTypeId == IMPEDANCE_SOURCE_CALCULATE) {
+               placeGridItem("earthFaultLabel");
+               placeGridItem("earthFaultCurrentLabel");
+               placeGridItem("earthFaultCurrentContainer", null, "grid");
+            } else
+            if (sourceImpedanceTypeId == IMPEDANCE_SOURCE_MEASURED) {
+               placeGridItem("sourceImpedanceLabel");
+               placeGridItem("sourceImpedanceContainer", null, "grid");
+            }
+         }
+      }
+
+
+      //mccb
+      if (protectionId == PROTECTION_MCCB && (checkFaultRating || checkLoopImpedance)) {
+
+         placeGridItem("mccbMakeLabel");
+         placeGridItem("mccbMakeId");
+         placeGridItem("mccbModelLabel");
+         placeGridItem("mccbModelId");
+         placeGridItem("mccbFaultRatingLabel");
+         placeGridItem("mccbFaultRatingId");
+         placeGridItem("mccbTripUnitTypeLabel");
+         placeGridItem("mccbTripUnitTypeId");
+         placeGridItem("mccbTripUnitLabel");
+         placeGridItem("mccbTripUnitId");
+         var mccbTripUnitId = document.getElementById('mccbTripUnitId').value;
+         var mccbTripUnitTypeId = document.getElementById('mccbTripUnitTypeId').value;
+         if (mccbTripUnitId != TRIP_UNIT_ID_AUTO && mccbTripUnitTypeId == TRIP_UNIT_TYPE_NSX_TMD) {
+            placeGridItem("mccbThermalPickupLabel");
+            placeGridItem("mccbThermalPickupId");
+            placeGridItem("mccbMagneticPickupLabel");
+            placeGridItem("mccbMagneticPickupId");
+         } else if (mccbTripUnitId != TRIP_UNIT_ID_AUTO && mccbTripUnitTypeId == TRIP_UNIT_TYPE_NSX_MICRO_LOGIC_2_3) {
+            placeGridItem("mccbThermalPickupLabel");
+            placeGridItem("mccbThermalPickupId");
+            placeGridItem("mccbShortTimePickupLabel");
+            placeGridItem("mccbShortTimePickupId");
+            placeGridItem("mccbInstantaneousPickupLabel");
+            placeGridItem("mccbInstantaneousPickupId");
+         } else if (mccbTripUnitId != TRIP_UNIT_ID_AUTO && mccbTripUnitTypeId == TRIP_UNIT_TYPE_NS_MICRO_LOGIC_2_0) {
+            placeGridItem("mccbThermalPickupLabel");
+            placeGridItem("mccbThermalPickupId");
+            placeGridItem("mccbShortTimePickupLabel");
+            placeGridItem("mccbShortTimePickupId");
+         }
+
+         if (checkFaultRating) {
+            placeGridItem("faultLabel");
+            placeGridItem("faultCurrentLabel");
+            placeGridItem("faultCurrentContainer", null, "grid");
+         }
+
+         //Always calculate for MCCB. Impedance calculated.
+         placeGridItem("earthFaultLabel");
+         placeGridItem("earthFaultCurrentLabel");
+         placeGridItem("earthFaultCurrentContainer", null, "grid");
+      }
+
+      //Generic
+      if (protectionId == PROTECTION_CURRENT_AND_TIME) {
+         if (checkFaultRating) {
+            placeGridItem("isFaultLimitingLabel");
+            placeGridItem("isFaultLimiting");
+            placeGridItem("faultLabel");
+            if (isFaultLimiting) {
+               placeGridItem("faultEnergyLabel");
+               placeGridItem("faultEnergyContainer", null, "grid");
+            }
+            placeGridItem("faultCurrentLabel");
+            placeGridItem("faultCurrentContainer", null, "grid");
+            if (!isFaultLimiting) {
+               placeGridItem("faultTimeLabel");
+               placeGridItem("faultTimeContainer", null, "grid");
+            }
+         }
+
+         if (checkFaultRating || checkLoopImpedance) {
+            placeGridItem("earthFaultLabel");
+         }
+
+         if (checkFaultRating && isFaultLimiting) {
+            placeGridItem("earthFaultEnergyLabel");
+            placeGridItem("earthFaultEnergyContainer", null, "grid");
+         }
+
+         if (checkFaultRating || checkLoopImpedance) {
+            placeGridItem("earthFaultCurrentLabel");
+            placeGridItem("earthFaultCurrentContainer", null, "grid");
+         }
+
+         if (checkLoopImpedance) {
+            placeGridItem("earthFaultCurrentPickupLabel");
+            placeGridItem("earthFaultCurrentPickupContainer", null, "grid");
+         }
+
+         if (checkFaultRating && !isFaultLimiting) {
+            placeGridItem("earthFaultTimeLabel");
+            placeGridItem("earthFaultTimeContainer", null, "grid");
+         }
+      }
+
+   }
+
+   function displayCableOptions(e) {
+
+      var conductorId = document.getElementById("conductorId").value;
+      var commonCableTypeId = document.getElementById("commonCableTypeId").value;
+      var cableTypeId = document.getElementById("cableTypeId").value;
+      var numberOfCables = document.getElementById("numberOfCables").value;
+      var showParallelCables = document.getElementById('showParallelCables').checked;
+      var selectedSizeId = document.getElementById("selectedSizeId").value;
+
+      //Active
+      placeGridItem("cableTypeLabel");
+      placeGridItem("cableTypeId");
+      placeGridItem("insulationLabel");
+      placeGridItem("insulationId");
+      placeGridItem("isFlexibleLabel");
+      placeGridItem("isFlexible");
+      placeGridItem("conductorLabel");
+      placeGridItem("conductorId");
+      placeGridItem("selectedSizeLabel");
+      placeGridItem("selectedSizeId");
+      placeGridItem("showParallelCablesLabel");
+      placeGridItem("showParallelCables");
+      if (showParallelCables) {
+         placeGridItem("numberOfCablesLabel");
+         placeGridItem("numberOfCables");
+      }
+
+      //Earth
+      if (
+         cableTypeId == CABLE_TWO_SINGLE_CORE ||
+         cableTypeId == CABLE_THREE_SINGLE_CORE ||
+         cableTypeId == CABLE_FOUR_SINGLE_CORE
+      ) {
+         //Place items
+         placeGridItem("earthCableHeadingLabel");
+         placeGridItem("earthInsulationLabel");
+         placeGridItem("earthInsulationId");
+         placeGridItem("earthIsFlexibleLabel");
+         placeGridItem("earthIsFlexible");
+         placeGridItem("earthConductorLabel");
+         placeGridItem("earthConductorId");
+         placeGridItem("selectedEarthSizeLabel");
+         placeGridItem("selectedEarthSizeId");
+         placeGridItem("numberOfEarthCablesLabel");
+         placeGridItem("numberOfEarthCables");
+      } else if (
+         cableTypeId == CABLE_TWO_CORE ||
+         cableTypeId == CABLE_THREE_CORE ||
+         cableTypeId == CABLE_FOUR_CORE
+      ) {
+         //Place items
+         placeGridItem("earthCableHeadingLabel");
+         placeGridItem("selectedEarthSizeLabel");
+         placeGridItem("selectedEarthSizeId");
+      }
+
+
+      //Show enabled or disabled
+      if (selectedSizeId == SIZE_AUTO) {
+         showAsDisabled("selectedEarthSizeId");
+      } else {
+         showAsEnabled("selectedEarthSizeId");
+      }
+
+      if (selectedSizeId == SIZE_AUTO) {
+         showAsDisabled("selectedEarthSizeId");
+      } else {
+         showAsEnabled("selectedEarthSizeId");
+      }
+      if (conductorId == CONDUCTOR_COPPER) {
+         showAsDisabled("earthConductorId");
+      } else {
+         showAsEnabled("earthConductorId");
+      }
+
+
+
+   }
+
+   function displayInstallationOptions(e) {
+      placeGridItem("installationHeadingLabel");
+      var installationId = document.getElementById("installationId").value;
+      var cableTypeId = document.getElementById("cableTypeId").value;
+      if ((cableTypeId == CABLE_THREE_SINGLE_CORE || cableTypeId == CABLE_FOUR_SINGLE_CORE || cableTypeId == CABLE_FOUR_SINGLE_CORE_MAINS) && installationId != INSTALLATION_AIR_SPACED) {
+         placeGridItem("formationLabel");
+         placeGridItem("formationId");
+      }
+      placeGridItem("installationContainer");
+   }
+
+   function displayButtons() {
+      var cableFound = document.getElementById("cableFound").value;
+      placeGridItem("calculateButton");
+      if (cableFound == 1) {
+         placeGridItem("generateReportButton");
+      }
+      placeGridItem("resetButton");
+      //placeGridItem("listReportsButton");
+   }
+
+   function placeGridItem(itemName, text, type = "block") {
+      var item = document.getElementById(itemName);
+      if (item != null) {
+         item.style.display = type;
+         if (text != null) item.innerHTML = text;
+      }
+   }
+
+   function hideGridItem(itemName) {
+      var item = document.getElementById(itemName);
+      if (item != null) {
+         item.style.display = "none";
+      }
+   }
+
+   function showAsDisabled(itemName) {
+      var item = document.getElementById(itemName);
+      if (item != null) {
+         item.style.backgroundColor = "#f2f2f2";
+      }
+   }
+
+   function showAsEnabled(itemName) {
+      var item = document.getElementById(itemName);
+      if (item != null) {
+         item.style.backgroundColor = "#ffffff";
+      }
+   }
+
+
+   function showMoreCables() {
+      document.getElementById('showMoreCablesButton').style.display = 'none';
+      document.getElementById('showLessCablesButton').style.display = 'inline-block';
+      var rows = document.getElementsByClassName('visibleRow');
+      for (var i = 0; i < rows.length; i++) {
+         rows[i].style.display = 'table-row';
+      }
+   }
+
+   function showLessCables() {
+      document.getElementById('showMoreCablesButton').style.display = 'inline-block';
+      document.getElementById('showLessCablesButton').style.display = 'none';
+      var rows = document.getElementsByClassName('visibleRow');
+      for (var i = 0; i < rows.length; i++) {
+         rows[i].style.display = 'none';
+      }
+   }
+
+   function showCalcs() {
+      placeGridItem("results-impedance-active-calc");
+      placeGridItem("results-impedance-earth-calc");
+      placeGridItem("results-voltdrop-calc");
+      placeGridItem("results-conductor-temp-calc");
+      placeGridItem("results-earth-loop-calc");
+      placeGridItem("results-fault-rating-calc");
+      placeGridItem("results-fault-rating-earth-calc");
+      hideGridItem("showCalcsButton");
+      gtag("event", "select_content", {
+         content_type: "calculations",
+         item_id: "cable-sizing-calculator-as3008"
+      });
+   }
+
+   function showFaultRating() {
+      document.getElementById('showFaultRatingButton').style.display = 'none';
+      document.getElementById('hideFaultRatingButton').style.display = 'inline-block';
+      var cols = document.getElementsByClassName('visCol_1');
+      for (var i = 0; i < cols.length; i++) {
+         cols[i].style.display = 'none';
+      }
+      var cols = document.getElementsByClassName('visCol_2');
+      for (var i = 0; i < cols.length; i++) {
+         cols[i].style.display = 'table-cell';
+      }
+   }
+
+   function hideFaultRating() {
+      document.getElementById('showFaultRatingButton').style.display = 'inline-block';
+      document.getElementById('hideFaultRatingButton').style.display = 'none';
+      var cols = document.getElementsByClassName('visCol_1');
+      for (var i = 0; i < cols.length; i++) {
+         cols[i].style.display = 'table-cell';
+      }
+      var cols = document.getElementsByClassName('visCol_2');
+      for (var i = 0; i < cols.length; i++) {
+         cols[i].style.display = 'none';
+      }
+   }
+
+   function showMore(id) {
+      var div = document.getElementById(id);
+      var button = div.querySelector("button.showMoreButton");
+      var rows = div.getElementsByClassName("showMore");
+
+      if (button.innerHTML == "Show more") {
+         button.innerHTML = 'Show less';
+         for (var i = 0; i < rows.length; i++) {
+            rows[i].style.display = 'table-row';
+         }
+      } else {
+         button.innerHTML = "Show more";
+         for (var i = 0; i < rows.length; i++) {
+            rows[i].style.display = 'none';
+         }
+      }
+   }
+
+
+   function keyPressed(e) {
+      if (e.keyCode === 13) {
+         calculate1();
+      }
+      document.getElementById('generateReportButton').style.display = 'none';
+   }
+
+   function copyCSVToClipBoard(e) {
+      csvData = document.getElementById("results-csv-data").innerHTML;
+      navigator.clipboard.writeText(csvData);
+      alert('Data copied to cliboard: ' + csvData);
+   }
+
+   //Old.Not used
+   function setFormStateInSession(formState) {
+      try {
+         if (typeof(Storage) !== "undefined") {
+            formState = sessionStorage.setItem("formState", formState);
+         }
+      } catch (exception) {
+         setClientError('Storage error: ' + exception.message);
+         console.log('Storage error: ' + exception.message);
+      }
+
+   }
+
+   //Old. Not used
+   function getFormStateFromSession() {
+      formState = FORM_STATE_READY;
+      try {
+         if (typeof(Storage) !== "undefined") {
+            formState = sessionStorage.getItem("formState");
+         }
+      } catch (e) {
+         setClientError('Storage error: ' + e.message);
+         console.log('Storage error: ' + e.message);
+      }
+      return formState;
+   }
+
+   function setFormState(formState) {
+      formStateElement = document.getElementById("formState");
+      if (formStateElement != null) {
+         formStateElement.value = formState;
+      } else {
+         setClientError("formStateElement is null in form in setFormState function");
+      }
+   }
+
+   function getFormState() {
+      formState = FORM_STATE_READY;
+      formStateElement = document.getElementById("formState");
+      if (formStateElement != null) {
+         formState = formStateElement.value;
+      } else {
+         setClientError("formStateElement is null in form in getFormState function");
+      }
+      return formState;
+   }
+
+   function setClientError(error) {
+      clientError = document.getElementById("clientError");
+      if (clientError != null) clientError.value = clientError.value + error + ', ';
+   }
+
+   //Temp to find error
+   function checkAndSetFormStateErrors(formState, theFunction) {
+
+      if (formState != FORM_STATE_READY) {
+         setClientError('Invalid form state in ' + theFunction);
+      }
+
+
+      try {
+         voltageIdElement = document.getElementById("voltageId");
+         if (voltageIdElement != null) {
+            voltageId = voltageIdElement.value;
+            voltageOptions = voltageIdElement.options;
+            voltageOptionsText = "";
+            for (var i = 0; i < voltageOptions.length; i++) {
+               voltageOptionsText = voltageOptionsText + voltageOptions[i].value + ':' + voltageOptions[i].label + ', ';
+            }
+            if (voltageId == "") {
+               setClientError('voltageId value is empty: ' + voltageId + ' index: ' + voltageIdElement.selectedIndex);
+               setClientError(voltageOptionsText);
+               setClientError(voltageIdElement.innerHTML);
+            } else if (formState != FORM_STATE_READY) {
+               setClientError('voltageId: ' + voltageId);
+            }
+
+         } else {
+            setClientError('voltageIdElement is null');
+         }
+
+         cableTypeIdElement = document.getElementById("cableTypeId");
+         if (cableTypeIdElement != null) {
+            cableTypeId = cableTypeIdElement.value;
+            cableTypeOptions = cableTypeIdElement.options;
+            cableTypeOptionsText = "";
+            for (var i = 0; i < cableTypeOptions.length; i++) {
+               cableTypeOptionsText = cableTypeOptionsText + cableTypeOptions[i].value + ':' + cableTypeOptions[i].label + ', ';
+            }
+            if (cableTypeId == "") {
+               setClientError('cableTypeId value is empty: ' + cableTypeId + ' index: ' + cableTypeIdElement.selectedIndex);
+               setClientError(cableTypeOptionsText);
+               setClientError(cableTypeIdElement.innerHTML);
+            } else if (formState != FORM_STATE_READY) {
+               setClientError('cableTypeId: ' + cableTypeId);
+            }
+         } else {
+            setClientError('cableTypeIdElement is null');
+         }
+
+
+      } catch (error) {
+         setClientError(error);
+
+      }
+   }
+
+
+   function addFormEventListeners() {
+
+      //Parameter info
+      document.getElementById("selectedEarthSizeId").addEventListener("click", showSelectedEarthMessage);
+
+   }
+
+   function showSelectedEarthMessage() {
+      selectedSizeId = document.getElementById("selectedSizeId").value;
+      if (selectedSizeId == SIZE_AUTO) {
+         document.getElementById("selectedEarthSizeMessage").innerHTML = 'Cannot select earth size when active size in Auto';
+      }
+   }
+
+
+
+
+   function addContentEventListeners() {
+
+      // //Heading info
+      // elements = document.getElementsByClassName("headingInfo");
+      // for (i = 0; i < elements.length; i++) {
+      //    elements[i].addEventListener("click", showParameterInfo)
+      // }
+
+      //Parameter info
+      elements = document.getElementsByClassName("parameterInfo");
+      for (i = 0; i < elements.length; i++) {
+         elements[i].addEventListener("click", showParameterInfo)
+      }
+
+      //Content link
+      contentElement = document.getElementById("contentDiv");
+      elements = contentElement.getElementsByTagName("a");
+      for (i = 0; i < elements.length; i++) {
+         elements[i].addEventListener("click", contentLink)
+      }
+   }
+
+
+
+   function showHeadingInfo(e) {
+      showBackButton();
+      anchor = e.target.parentElement.id.replace("Label", "Info");
+      location.href = "#" + anchor;
+   }
+
+   function showParameterInfo(e) {
+      showBackButton();
+      anchor = e.target.parentElement.id.replace("Label", "Info");
+
+      if (anchor == 'mccbTripUnitInfo' ||
+         anchor == 'mccbThermalPickupInfo' ||
+         anchor == 'mccbMagneticPickupInfo' ||
+         anchor == 'mccbInstantaneousPickupInfo' ||
+         anchor == 'mccbShortTimePickupInfo') {
+         element = document.getElementById("mccbTripUnitTypeId");
+         if (element != null) {
+            anchor = anchor + '_' + element.value;
+         }
+      }
+
+      if (anchor == 'numberOfTiersInfo') {
+         element = document.getElementById("supportId");
+         if (element != null) {
+            anchor = anchor + '_' + element.value;
+         }
+      }
+
+      location.href = "#" + anchor;
+   }
+
+   function contentLink(e) {
+      showBackButton();
+      return true;
+   }
+
+   function back(e) {
+      anchor = window.location.hash;
+      if (anchor == null || anchor == "") {
+         hideBackButton();
+         scrollPosition = document.getElementById("scrollPosition").value;
+         window.scrollTo(0, scrollPosition);
+      } else {
+         history.back();
+         if (scrollPosition == window.pageYOffset) {
+            hideBackButton();
+         }
+      }
+   }
+
+   function showBackButton() {
+      element = document.getElementById("backButton");
+      element.style.display = "block";
+   }
+
+   function hideBackButton() {
+      element = document.getElementById("backButton");
+      element.style.display = "none";
+   }
+</script>
+
+</head>
+
+<!-- Top menu starts here-->
+<div class="headDiv">
+    <hr class="top_hr1">
+
+    <div class="topnav" id="topnav">
+        <a id="logo" href="index.htm">jCalc</a>
+        <a id="menuBarsLink" href="javascript:void(0);" class="icon" onclick="myFunction()"><img id="menuBarsImage" width="45" height="45" alt="menu" src="image/menu-bars.png"></a>
+
+                    <a id="login" href="https://www.jcalc.net/user-controller/loginForm">Log in</a>
+            <a href="contact.html">Contact</a>
+            <a href="about.html">About</a>
+            <a href="updates.html">Updates</a>
+            <a href="https://www.jcalc.net/user-controller/showSubscriptionOffers">Prices</a>
+            <a href="faq.html">FAQ</a>
+            <a href="index.htm">Home</a>
+        
+    </div>
+    <hr class="top_hr2">
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("topnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+</div>
+<div class="mainDiv">
+
+   <h1>Cable Size Calculator AS/NZS 3008</h1>
+   <p id="page_description">Cable size calculator for current rating, voltage drop, loop impedance, earth cable and short circuit, based on Australia and New Zealand standard AS/NZS 3008.</p>
+
+   
+   <div class="calcDiv" id="calculator-form" data-nosnippet="">
+
+      <!--TODO change action -->
+      <form action="https://www.jcalc.net/cable-sizing-calculator-as3008" method="post" id="calcForm" class="calcForm" onchange="this.reportValidity()" autocomplete="off">
+         <div class="formGrid" id="formGrid">
+
+            <!-- Standard -->
+            <label id="standardHeadingLabel" class="formHeading">Standard<span class="parameterInfo">i</span></label>
+            <select name="standardId" onchange="changeSelect(this.id)" id="standardId"><option value="1" selected="">Australian conditions</option><option value="2">New Zealand conditions</option></select>
+
+            <!-- Load -->
+            <label id="loadHeadingLabel" class="formHeading">Load</label>
+            <label id="phaseLabel">Phase<span class="parameterInfo">i</span></label>
+            <select name="phaseId" onchange="changeSelect(this.id)" id="phaseId"><option value="1" selected="selected">3 Phase AC</option><option value="2">1 Phase AC</option><option value="3">DC</option><option value="4">2 Phase 120°</option><option value="5">2 Phase 180°</option></select>
+
+            <label id="voltageLabel">Voltage<span class="parameterInfo">i</span></label>
+            <select name="voltageId" onchange="changeSelect(this.id)" id="voltageId"><option value="400" selected="">400 V</option><option value="415">415 V</option><option value="380">380 V</option><option value="690">690 V</option><option value="1000">1 kV</option><option value="111">Other</option></select>
+
+            <label id="otherVoltageLabel">Specify voltage<span class="parameterInfo">i</span></label>
+            <div id="otherVoltageContainer" class="inputWithUnitGrid">
+               <input type="number" required="" min="1" step="any" name="voltage" id="voltage" class="inputValue" value="400" onchange="changeSelect()">
+               <label id="otherVoltageUnitLabel" class="inputUnit">V</label>
+            </div>
+
+            <label id="ratingLabel">Rating<span class="parameterInfo">i</span></label>
+            <input type="number" required="" min="0.01" step="any" name="load" id="load" value="63">
+            <select name="loadUnitId" onchange="changeSelect(this.id)" id="loadUnitId"><option value="1">kW</option><option value="2">kVA</option><option value="3" selected="">A</option><option value="4">hp</option></select>
+
+            <label id="pfLabel">Power factor<span class="parameterInfo">i</span></label>
+            <input type="number" required="" min="0.01" step="any" name="pf" id="pf" value="0.86">
+
+            <!-- Voltage drop -->
+            <label id="voltdropHeadingLabel" class="formHeading">Voltage drop</label>
+
+            <label id="requiredVoltdropPercLabel">Max. voltage drop<span class="parameterInfo">i</span></label>
+            <select name="requiredVoltdropPercId" onchange="changeSelect(this.id)" id="requiredVoltdropPercId"><option value="1.0">1.0 %</option><option value="1.5">1.5 %</option><option value="2.0">2.0 %</option><option value="2.5">2.5 %</option><option value="3.0" selected="">3.0 %</option><option value="3.5">3.5 %</option><option value="4.0">4.0 %</option><option value="4.5">4.5 %</option><option value="5.0">5.0 %</option><option value="111">Other</option></select>
+
+            <label id="otherRequiredVoltdropPercLabel">Specify max. voltage drop<span class="parameterInfo">i</span></label>
+            <div id="otherRequiredVoltdropPercContainer" class="inputWithUnitGrid">
+               <input type="number" required="" min="0.01" max="100" step="any" name="requiredVoltdropPerc" id="requiredVoltdropPerc" class="inputValue" value="3">
+               <label id="otherRequiredVoltdropPercUnit" class="inputUnit">%</label>
+            </div>
+
+            <label id="distanceLabel">Cable distance<span class="parameterInfo">i</span></label>
+            <div id="distanceContainer" class="inputWithUnitGrid">
+               <input type="number" required="" min="0.01" step="any" name="distance" id="distance" class="inputValue" value="40">
+               <label id="distanceUnit" class="inputUnit">m</label>
+            </div>
+
+            <label id="showVoltdropOptionsLabel">Advanced options<span class="parameterInfo">i</span></label>
+            <input type="checkbox" name="showVoltdropOptions" id="showVoltdropOptions" value="yes" onchange="changeSelect(this.id)">
+
+            <label id="conductorTemperatureTypeLabel">Conductor temperature<span class="parameterInfo">i</span></label>
+            <select name="conductorTemperatureTypeId" onchange="changeSelect(this.id)" id="conductorTemperatureTypeId"><option value="1">Maximum</option><option value="2" selected=""> Calculated</option></select>
+
+            <label id="loadPowerFactorTypeLabel">Load power factor<span class="parameterInfo">i</span> </label>
+            <select name="loadPowerFactorTypeId" onchange="changeSelect(this.id)" id="loadPowerFactorTypeId"><option value="1" selected="">Worst case</option><option value="2">Specified</option></select>
+
+            <!-- Cable -->
+            <label id="insulationLabel" class="formHeading">Insulation<span class="parameterInfo">i</span></label>
+            <select name="insulationId" onchange="changeSelect(this.id)" id="insulationId"><optgroup label="Popular"><option value="1" selected="selected">PVC V-90 Standard 75°</option><option value="2">XLPE X-90 Standard 90°</option></optgroup><optgroup label="Special PVC"><option value="12">V-75 Traditional 75°</option><option value="4">V-90 Operate at 90°</option><option value="5">V-90HT Operate at 105°</option></optgroup><optgroup label="Special XLPE"><option value="3">X-110 High Temp 110°</option><option value="6">X-HF-90 Fire 90°</option><option value="7">X-HF-110 Fire and High Temp</option></optgroup><optgroup label="Special Elastomer"><option value="8">R-EP-90 Standard 90°</option><option value="10">R-HF-90 Fire 90°</option><option value="9">R-E-110 High Temp 110°</option><option value="11">R-HF-110 Fire and High Temp</option></optgroup></select>
+
+            <label id="cableTypeLabel" class="formHeading">Cable type<span class="parameterInfo">i</span></label>
+            <select name="cableTypeId" onchange="changeSelect(this.id)" id="cableTypeId"><option value="2">Multi-core 3C+E</option><option value="5" selected="selected">Multi-core 4C+E</option><option value="8">Multi-core 4C (mains)</option><option value="4">Single-cores 3x1C+E</option><option value="6">Single-cores 4x1C+E</option><option value="10">Single-cores 4x1C (mains)</option></select>
+
+            <label id="isFlexibleLabel">Flexible cable<span class="parameterInfo">i</span></label>
+            <input type="checkbox" name="isFlexible" id="isFlexible" value="yes" onchange="changeSelect(this.id)">
+
+            <label id="conductorLabel">Conductor<span class="parameterInfo">i</span></label>
+            <select name="conductorId" onchange="changeSelect(this.id)" id="conductorId"><option value="1" selected="">Copper</option><option value="3">Aluminium</option></select>
+
+            <label id="selectedSizeLabel">Active size<span class="parameterInfo">i</span></label>
+            <select name="selectedSizeId" onchange="changeSelect(this.id)" id="selectedSizeId"><option value="111" selected="">Auto</option><option value="1">1</option><option value="2">1.5</option><option value="3">2.5</option><option value="4">4</option><option value="5">6</option><option value="6">10</option><option value="7">16</option><option value="8">25</option><option value="9">35</option><option value="10">50</option><option value="11">70</option><option value="12">95</option><option value="13">120</option><option value="14">150</option><option value="15">185</option><option value="16">240</option><option value="17">300</option><option value="18">400</option><option value="19">500</option></select>
+
+            <label id="showParallelCablesLabel">Use parallel cables<span class="parameterInfo">i</span></label>
+            <input type="checkbox" name="showParallelCables" id="showParallelCables" value="yes" onchange="changeSelect(this.id)">
+
+            <label id="numberOfCablesLabel">No of cables<span class="parameterInfo">i</span>
+               <br><span class="formWarning"></span></label>
+            <select name="numberOfCables" onchange="changeSelect(this.id)" id="numberOfCables"><option value="1" selected="">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+
+            <!-- Earth -->
+            <label id="earthInsulationLabel" class="formHeading">Earth insulation<span class="parameterInfo">i</span></label>
+            <select name="earthInsulationId" onchange="changeSelect(this.id)" id="earthInsulationId"><optgroup label="Popular"><option value="1" selected="selected">PVC V-90 Standard 75°</option><option value="2">XLPE X-90 Standard 90°</option></optgroup><optgroup label="Special PVC"><option value="12">V-75 Traditional 75°</option><option value="4">V-90 Operate at 90°</option><option value="5">V-90HT Operate at 105°</option></optgroup><optgroup label="Special XLPE"><option value="3">X-110 High Temp 110°</option><option value="6">X-HF-90 Fire 90°</option><option value="7">X-HF-110 Fire and High Temp</option></optgroup><optgroup label="Special Elastomer"><option value="8">R-EP-90 Standard 90°</option><option value="10">R-HF-90 Fire 90°</option><option value="9">R-E-110 High Temp 110°</option><option value="11">R-HF-110 Fire and High Temp</option></optgroup></select>
+
+            <label id="earthCableHeadingLabel" class="formHeading">Earth core</label>
+
+            <label id="earthIsFlexibleLabel">Flexible<span class="parameterInfo">i</span></label>
+            <input type="checkbox" name="earthIsFlexible" id="earthIsFlexible" value="yes" onchange="changeSelect(this.id)">
+
+            <label id="earthConductorLabel">Conductor<span class="parameterInfo">i</span></label>
+            <select name="earthConductorId" onchange="changeSelect(this.id)" id="earthConductorId"><option value="1" selected="">Copper</option></select>
+
+            <label id="selectedEarthSizeLabel">Earth size<span class="parameterInfo">i</span>
+               <br><span class="formWarning" id="selectedEarthSizeMessage"></span></label>
+            <select name="selectedEarthSizeId" onchange="changeSelect(this.id)" id="selectedEarthSizeId"><option value="111" selected="">Auto</option></select>
+
+            <label id="numberOfEarthCablesLabel">No of earth cores<span class="parameterInfo">i</span></label>
+            <select name="numberOfEarthCables" onchange="changeSelect(this.id)" id="numberOfEarthCables"><option value="1" selected="">1</option></select>
+
+            <!-- Installation -->
+            <label id="installationHeadingLabel" class="formHeading">Installation<span class="parameterInfo">i</span></label>
+
+            <label id="formationLabel">Formation</label>
+            <select name="formationId" onchange="changeSelect(this.id)" id="formationId"><option value="1" selected="selected">Trefoil</option></select>
+
+            <div id="installationContainer" onclick="selectInstallation()">
+               <div id="installationGrid" onclick="selectInstallation()">
+                  <img id="installationImage" onclick="selectInstallation()" src="https://www.jcalc.net/image/installation/phase_three/cable_four_core/trefoil/installation_underground_enclosure.png" width="100" height="100" alt="image">
+                  <p id="installationDescription" onclick="selectInstallation()">Underground wiring enclosure</p>
+                  <p id="installationArrow" onclick="selectInstallation()"><i class="arrow"></i></p>
+               </div>
+            </div>
+
+            <!-- Derating -->
+            <label id="showDeratingOptionsLabel">Show derating options<span class="parameterInfo">i</span></label>
+            <input type="checkbox" name="showDeratingOptions" id="showDeratingOptions" value="yes" onchange="changeSelect(this.id)">
+
+            <select name="supportId" onchange="changeSelect(this.id)" id="supportId"><option value="10" selected="selected">Bunched in an enclosure</option><option value="13">One cable per enclosure</option></select>
+
+            <label id="numberOfCircuitsLabel"><span class="parameterInfo">i</span></label>
+            <select name="numberOfCircuits" onchange="changeSelect(this.id)" id="numberOfCircuits"><option value="1" selected="">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="12">12</option><option value="14">14</option><option value="16">16</option><option value="18">18</option><option value="20">20</option></select>
+
+            <label id="spacingLabel"><span class="parameterInfo">i</span></label>
+            <select name="spacingId" onchange="changeSelect(this.id)" id="spacingId"><option value="3" selected="selected">Touching</option></select>
+
+            <label id="numberOfTiersLabel"><span class="parameterInfo">i</span></label>
+            <select name="numberOfTiers" onchange="changeSelect(this.id)" id="numberOfTiers"><option value="1" selected="">1</option></select>
+
+                        
+            <label id="soilTemperatureLabel"><span class="parameterInfo">i</span></label>
+            <select name="soilTemperatureId" onchange="changeSelect(this.id)" id="soilTemperatureId"><option value="1">10 °C</option><option value="2">15 °C</option><option value="3">20 °C</option><option value="4" selected="selected">25 °C</option><option value="5">30 °C</option><option value="6">35 °C</option><option value="7">40 °C</option></select>
+
+            <label id="airTemperatureLabel"><span class="parameterInfo">i</span></label>
+            <select name="airTemperatureId" onchange="changeSelect(this.id)" id="airTemperatureId"><option value="1">15 °C</option><option value="2">20 °C</option><option value="3">25 °C</option><option value="4">30 °C</option><option value="5">35 °C</option><option value="6" selected="selected">40 °C</option><option value="7">45 °C</option><option value="8">50 °C</option><option value="9">55 °C</option><option value="10">60 °C</option><option value="11">65 °C</option><option value="12">70 °C</option></select>
+
+            <label id="cableDepthLabel">
+               <span class="parameterInfo">i</span></label>
+            <select name="cableDepthId" onchange="changeSelect(this.id)" id="cableDepthId"><option value="1" selected="selected">0.5 m</option><option value="2">0.6 m</option><option value="3">0.8 m</option><option value="4">1.0 m</option><option value="5">1.25 m</option><option value="6">1.5 m</option><option value="7">1.75 m</option><option value="8">2.0 m</option><option value="9">2.5 m</option><option value="10">3+ m</option></select>
+
+            <label id="soilResistivityLabel"><span class="parameterInfo">i</span></label>
+            <select name="soilResistivityId" onchange="changeSelect(this.id)" id="soilResistivityId"><option value="1">0.8</option><option value="2">0.9</option><option value="3">1.0</option><option value="4" selected="">1.2</option><option value="5">1.5</option><option value="6">2.0</option><option value="7">2.5</option><option value="8">3.0</option></select>
+
+            <!-- Protection -->
+            <label id="protectionHeadingLabel" class="formHeading">Short circuit protection</label>
+
+            <label id="checkFaultRatingLabel">Check short circuit rating<span class="parameterInfo">i</span></label>
+            <input type="checkbox" name="checkFaultRating" id="checkFaultRating" value="yes" onchange="changeSelect(this.id)">
+
+            <label id="checkLoopImpedanceLabel">Check loop impedance<span class="parameterInfo">i</span></label>
+            <input type="checkbox" name="checkLoopImpedance" id="checkLoopImpedance" value="yes" onchange="changeSelect(this.id)">
+
+            <label id="protectionLabel">Protection<span class="parameterInfo">i</span></label>
+            <select name="protectionId" onchange="changeSelect(this.id)" id="protectionId"><option value="2" selected="">MCB</option><option value="3">MCCB</option><option value="1">Generic</option></select>
+
+            <!-- mcb -->
+            
+               <label id="mcbCurveLabel">MCB curve type<span class="parameterInfo">i</span></label>
+               <select name="mcbCurveId" onchange="changeSelect(this.id)" id="mcbCurveId"><option value="1">B</option><option value="2" selected="">C</option><option value="3">D</option></select>
+
+               <label id="mcbRatingLabel">MCB rating<span class="parameterInfo">i</span></label>
+               <select name="mcbRatingId" onchange="changeSelect(this.id)" id="mcbRatingId"><option value="111" selected="selected">Auto</option><option value="1">1 A</option><option value="2">2 A</option><option value="4">4 A</option><option value="6">6 A</option><option value="8">8 A</option><option value="10">10 A</option><option value="16">16 A</option><option value="20">20 A</option><option value="25">25 A</option><option value="32">32 A</option><option value="40">40 A</option><option value="50">50 A</option><option value="63">63 A</option><option value="80">80 A</option><option value="100">100 A</option><option value="125">125 A</option></select>
+
+
+               <!-- mccb -->
+            
+            <!-- generic -->
+
+            <!-- Source impedance -->
+            <label id="sourceImpedanceTypeLabel">Source impedance<span class="parameterInfo">i</span></label>
+            <select name="sourceImpedanceTypeId" onchange="changeSelect(this.id)" id="sourceImpedanceTypeId"><option value="1" selected="">Estimate</option><option value="2">Calculate</option><option value="3">Measured</option></select>
+
+            <label id="sourceImpedanceLabel">Measured impedance<span class="parameterInfo">i</span></label>
+            <div id="sourceImpedanceContainer" class="inputWithUnitGrid">
+               <input type="number" required="" min="0.001" step="any" name="sourceImpedance" id="sourceImpedance" class="inputValue" value="0.01">
+               <label id="sourceImpedanceUnit" class="inputUnit">&Omega;</label>
+            </div>
+
+
+            <!-- Fault limiting -->
+            <label id="isFaultLimitingLabel">Current limiting<span class="parameterInfo">i</span></label>
+            <input type="checkbox" name="isFaultLimiting" id="isFaultLimiting" value="yes" onchange="changeSelect(this.id)">
+
+            <!-- phase fault -->
+            <label id="faultLabel" class="formHeading">Three-phase fault</label>
+
+            <label id="faultCurrentLabel">Prospective fault current<span class="parameterInfo">i</span></label>
+            <div id="faultCurrentContainer" class="inputWithUnitGrid">
+               <input type="number" required="" min="0.001" max="150" step="any" name="faultCurrent" id="faultCurrent" class="inputValue" value="2">
+               <label id="faultCurrentUnit" class="inputUnit">kA</label>
+            </div>
+
+            <label id="faultCurrentPickupLabel">Trip current (A)<span class="parameterInfo">i</span></label>
+            <div id="faultCurrentPickupContainer" class="inputWithUnitGrid">
+               <input type="number" required="" min="0.001" step="any" name="faultCurrentPickup" id="faultCurrentPickup" class="inputValue" value="200">
+               <label id="faultCurrentPickupUnit" class="inputUnit">ms</label>
+            </div>
+
+            <label id="faultTimeLabel">Trip time<span class="parameterInfo">i</span></label>
+            <div id="faultTimeContainer" class="inputWithUnitGrid">
+               <input type="number" required="" min="0.01" step="any" name="faultTime" id="faultTime" class="inputValue" value="20">
+               <label id="faultTimeUnit" class="inputUnit">ms</label>
+            </div>
+
+            <label id="faultEnergyLabel">Let-through energy<span class="parameterInfo">i</span></label>
+            <div id="faultEnergyContainer" class="inputWithUnitGrid">
+               <input type="number" required="" min="0.001" step="any" name="faultEnergy" id="faultEnergy" class="inputValue" value="25000">
+               <label id="faultEnergyUnit" class="inputUnit">A&#0178;s</label>
+            </div>
+
+            <!-- earth fault -->
+            <label id="earthFaultLabel" class="formHeading">Earth fault</label>
+
+            <label id="earthFaultCurrentLabel">Prospective fault current<span class="parameterInfo">i</span></label>
+            <div id="earthFaultCurrentContainer" class="inputWithUnitGrid">
+               <input type="number" required="" min="0.001" max="150" step="any" name="earthFaultCurrent" id="earthFaultCurrent" class="inputValue" value="2">
+               <label id="earthFaultCurrentUnit" class="inputUnit">kA</label>
+            </div>
+
+            <label id="earthFaultCurrentPickupLabel">Trip current<span class="parameterInfo">i</span></label>
+            <div id="earthFaultCurrentPickupContainer" class="inputWithUnitGrid">
+               <input type="number" required="" min="0.001" step="any" name="earthFaultCurrentPickup" id="earthFaultCurrentPickup" class="inputValue" value="200">
+               <label id="earthFaultCurrentPickupUnit" class="inputUnit">A</label>
+            </div>
+
+            <label id="earthFaultTimeLabel">Trip time<span class="parameterInfo">i</span></label>
+            <div id="earthFaultTimeContainer" class="inputWithUnitGrid">
+               <input type="number" required="" min="0.01" step="any" name="earthFaultTime" id="earthFaultTime" class="inputValue" value="20">
+               <label id="earthFaultTimeUnit" class="inputUnit">ms</label>
+            </div>
+
+            <label id="earthFaultEnergyLabel">Let-through energy<span class="parameterInfo">i</span></label>
+            <div id="earthFaultEnergyContainer" class="inputWithUnitGrid">
+               <input type="number" required="" min="0.001" step="any" name="earthFaultEnergy" id="earthFaultEnergy" class="inputValue" value="25000">
+               <label id="earthFaultEnergyUnit" class="inputUnit">A&#0178;s</label>
+            </div>
+
+            <!-- Options -->
+            <label id="showCalcsLabel">Display calculation steps</label>
+            <input type="checkbox" name="showCalcs" id="showCalcs" value="yes" checked="">
+
+            <!-- Hidden -->
+            <input type="hidden" name="installationId" id="installationId" value="13">
+            <input type="hidden" name="commonCableTypeId" id="commonCableTypeId" value="2">
+            <input type="hidden" name="scrollPosition" id="scrollPosition" value="0">
+            <input type="hidden" name="action" id="action" value="calculate">
+            <input type="hidden" name="cableFound" id="cableFound" value="">
+            <input type="hidden" name="version" id="version" value="16">
+            <input type="hidden" name="clientError" id="clientError" value="">
+            <input type="hidden" name="formState" id="formState" value="1">
+            <!-- Buttons -->
+            <input type="button" name="calculateButton" id="calculateButton" value="Calculate" onclick="calculate1()">
+            <input type="button" name="resetButton" id="resetButton" value="Reset" onclick="resetSession()">
+            <input type="button" name="generateReportButton" id="generateReportButton" value="Generate PDF Report" onclick="generateReport()">
+            <input type="button" name="listReportsButton" id="listReportsButton" value="PDF Reports" onclick="listReports()">
+         </div>
+      </form>
+
+
+      <!--End calcDiv -->
+   </div>
+
+
+   <div id="results-grid-div" data-nosnippet="">
+
+      
+   </div>
+
+
+
+   <div id="results-show-calcs-button-div">
+   </div>
+
+
+
+   <div class="contentDiv" id="contentDiv">
+
+
+   <div id="contentDivRight">
+
+      <h2 id="feedback">How can I improve this calculator?</h2>
+      <p>Please click <b><a href="contact.html">here</a></b> to let me know.</p>
+
+      <h2>Parameters</h2>
+      <ul>
+         <li><a href="#standardHeadingInfo">Standard</a></li>
+         <li><a href="#loadHeadingInfo">Load</a></li>
+         <li><a href="#voltdropHeadingInfo">Voltage drop</a></li>
+         <li><a href="#cableTypeHeadingInfo">Active cable</a></li>
+         <li><a href="#earthCableHeadingInfo">Earth cable</a>
+         <li><a href="#installationHeadingInfo">Installation</a></li>
+         <li><a href="#installationDeratingHeadingInfo">Installation derating</a></li>
+         <li><a href="#protectionHeadingInfo">Short circuit</a>
+            <ul>
+               <li><a href="#shortCircuitHeadingInfoMCB">MCB</a></li>
+               <li><a href="#shortCircuitHeadingInfoMCCB">MCCB</a></li>
+               <li><a href="#shortCircuitHeadingInfoGeneric">Generic device</a></li>
+            </ul>
+         </li>
+      </ul>
+
+      <h2>Defintions</h2>
+      <ul>
+         <li><a href="#cableGroupDefinition">Single-core cable group</a></li>
+      </ul>
+
+      <h2>Calculations</h2>
+      <ul>
+         <li><a href="#ratingCalculation">Current rating</a></li>
+         <li><a href="#deratingCalculation">Derating</a></li>
+         <li><a href="#impedanceCalculation">Impedance</a></li>
+         <li><a href="#loopImpedanceCalculation">Loop impedance</a></li>
+
+         <li><a href="#voltageDropCalculationWorseCase">Voltage drop</a>
+            <ul>
+               <li><a href="#voltageDropCalculationWorseCase">Worst case power factor</a></li>
+               <li><a href="#voltageDropCalculationSpecified">Specified power factor</a></li>
+            </ul>
+         </li>
+         <li><a href="#resistance">Resistance</a></li>
+         <li><a href="#reactance">Reactance</a></li>
+         <li><a href="#shortCircuitCalculation">Short circuit</a></li>
+      </ul>
+
+
+   </div>
+
+
+   <div id="contentDivLeft">
+
+      <h2 id="seeAlso">See Also</h2>
+      <ul>
+         <li><a href="maximum-demand-calculator-as3000.html">Maximum Demand Calculator AS/NZS 3000</a></li>
+         <li><a href="arc-flash-calculator-ieee.html">Arc Flash Calculator IEEE 1584</a></li>
+      </ul>
+
+      <h2 id="standardHeadingInfo">Standard parameters</h2>
+      <ul class="parameterList">
+         <li id="standardInfo"><b>Standard:</b> Select the relevant part in AS/NZS 3008: 2017.
+            <ul>
+               <li><a href="https://store.standards.org.au/product/as-nzs-3008-1-1-2017">Part 1:</a> Australian conditions. Air 40°C. Soil 25°C.</li>
+               <li><a href="https://store.standards.org.au/product/as-nzs-3008-1-2-2017">Part 2:</a> New Zealand conditions. Air 30°C. Soil 15°C.</li>
+            </ul>
+         </li>
+         <li>The differences between the parts are:
+            <ul>
+               <li>Rating tables, Table 4 to 15.</li>
+               <li>Air temperature derating, Table 27(1).</li>
+               <li>Soil temperature derating, Table 27(2).</li>
+            </ul>
+         </li>
+      </ul>
+
+
+      <h2 id="loadHeadingInfo">Load parameters</h2>
+      <ul class="parameterList">
+         <li id="phaseInfo"><b>Phase:</b> Select the phase arrangement.
+
+            <table id="phaseTable" class="generalTable">
+               <tr>
+                  <td></td>
+                  <td>Typical</td>
+                  <td>Image</td>
+               </tr>
+               <tr>
+                  <td>3 Phase AC</td>
+                  <td>400 V<br>415 V</td>
+                  <td>
+                     <img width="200" height="200" src="image/supply_three_phase.png" alt="Three-phase power supply"><br>
+                     Large loads and consumer mains.
+                  </td>
+               </tr>
+               <tr>
+                  <td>1 Phase AC</td>
+                  <td>230 V<br>240 V</td>
+                  <td>
+                     <img width="200" height="200" src="image/supply_single_phase.png" alt="Single-phase power supply"><br>
+                     Smaller loads and consumer mains.
+                  </td>
+               </tr>
+               <tr>
+                  <td>DC</td>
+                  <td>12 V<br>24 V<br>110 V</td>
+                  <td></td>
+               </tr>
+               <tr>
+                  <td>2 Phase 120°</td>
+                  <td>400 V<br>415 V</td>
+                  <td>
+                     <img width="200" height="200" src="image/supply_two_phase_120.png" alt="Two-phase 120° power supply"><br>
+                     Occasionally used in industrial and commercial lighting.<br>
+                     Occasionally used as residential mains.
+                  </td>
+               </tr>
+               <tr>
+                  <td>2 Phase 180°</td>
+                  <td>480 V<br>460 V</td>
+                  <td>
+                     <img width="200" height="200" src="image/supply_two_phase_180.png" alt="Two-phase 180° power supply"><br>
+                     Rural mains and large rural loads on <a href="https://en.wikipedia.org/wiki/Single-wire_earth_return" target="_blank">SWER</a> systems.<br>
+                     .
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li id="voltageInfo"><b>Voltage (V):</b> Select the voltage. If the voltage is not available in the select list, choose "Other" and specify any value in the ranges shown below.</li>
+         <li id="otherVoltageInfo"><b>Specify voltage (V):</b> Specify any voltage in the following ranges.
+            <table class="generalTable" style="max-width: 500px;">
+               <tr>
+                  <th></th>
+                  <th>min</th>
+                  <th>max</th>
+               </tr>
+               <tr>
+                  <td>
+                     3 Phase AC<br>
+                     1 Phase 120°<br>
+                     1 Phase 180°
+                  </td>
+                  <td>1 V</td>
+                  <td>1,000 V<br>phase-to-phase</td>
+               </tr>
+               <tr>
+                  <td>
+                     1 Phase AC<br>
+                     DC
+                  </td>
+                  <td>1 V</td>
+                  <td>1,000 V<br>phase-to-neutral</td>
+               </tr>
+            </table>
+
+         </li>
+         <li id="ratingInfo">
+            <p><b>Rating:</b> Specify the load rating in kW, kVA, A, or hp. </p>
+            <p>When the rating in is ampere, enter the <b>per&#8209;phase</b> line current for 3&#8209;phase systems. For example, enter only 100 A in the following scenario.</p>
+            <table class="generalTable" style="max-width: 280px;">
+               <tr>
+                  <td>Phase 1 line current</td>
+                  <td>100 A</td>
+               </tr>
+               <tr>
+                  <td>Phase 2 line current</td>
+                  <td>100 A</td>
+               </tr>
+               <tr>
+                  <td>Phase 3 line current</td>
+                  <td>100 A</td>
+               </tr>
+               <tr>
+                  <td colspan="2">Enter only 100 A</td>
+               </tr>
+            </table>
+            <p>Note: It is the line current (not the delta winding current) for three-phase motors. </p>
+
+         </li>
+         <li id="pfInfo"><b>PF:</b> Specify the load power factor when the load rating is specified in kW or hp.
+            It is also required for A and kVA rating when the <a href="#loadPowerFactorTypeParameter">Load Power Factor</a> option is selected as Specified under <a href="#showVoltdropOptionsParameter">Advanced Voltage Drop</a> options.
+      </li></ul>
+
+
+      <h2 id="voltdropHeadingInfo">Voltage drop parameters</h2>
+      <ul class="parameterList">
+         <li id="requiredVoltdropPercInfo"><b>Max. volt drop (%):</b> Select the maximum allowable voltage drop at the load. Select Other to specify a custom value.</li>
+         <li id="otherRequiredVoltdropPercInfo"><b>Specify max. volt drop (%):</b> Specify any voltage drop between 0.01 % and 100 %.</li>
+         <li id="distanceInfo"><b>Distance (m):</b> The cable length in meters from the source to the load. The return length is automatically included by the calculator for single-phase and three-phase installations.</li>
+         <li id="showVoltdropOptionsInfo"><b>Advanced options:</b> Select to show the following two options.
+         <li id="conductorTemperatureTypeInfo"><b>Conductor temperature:</b> Select Calculate or Maximum.
+            <table class="generalTable" id="voltDropOptionsTable1">
+               <tr>
+                  <td>Calculate (default)</td>
+                  <td>The calculated operating temperature is used to select the cable <a href="#resistance">resistance</a> for voltage drop calculations. Read more <a href="#resistance">here</a>.
+                  </td>
+               </tr>
+               <tr>
+                  <td>Maximum</td>
+                  <td>The maximum rated temperature of the insulation is used to select the cable <a href="#resistance">resistance</a> for voltage drop calculations. This is the most conservative option.
+                  </td>
+               </tr>
+            </table>
+         </li>
+         <li id="loadPowerFactorTypeInfo"><b>Load power factor:</b> Worst case or Specified.
+            <table class="generalTable" id="voltDropOptionsTable2">
+               <tr>
+                  <td>Worst case (default)</td>
+                  <td>The worst-case power factor is used to calculate the voltage drop. This is the most conservative option. Read more <a href="#voltageDropCalculationWorseCase">here</a>.
+                  </td>
+               </tr>
+               <tr>
+                  <td>Specified</td>
+                  <td>The specified power factor of the load is used to calculate the voltage drop. Read more <a href="#voltageDropCalculationSpecified">here</a>.
+                  </td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+
+      <h2 id="cableTypeHeadingInfo">Active cable parameters</h2>
+      <ul class="parameterList">
+
+         <li id="insulationInfo">
+            <p><b>Insulation:</b> Select the insulation for the cables.
+               For multi-core cables, this applies to the live, neutral, and earth conductors.
+               For single-core cables, this applies to the live and neutral conductors.
+               The earth-cable select is selected under <a href="#earthInsulationInfo">Earth Cable Insulation</a>.</p>
+            <table class="generalTable" id="insulationTablePopular">
+               <tr>
+                  <th colspan="2">Popular</th>
+               </tr>
+               <tr>
+                  <td>PVC V-90 Standard 75°C</td>
+                  <td>Most popular insulation.
+                     <br>Max. temperature: 75°C.
+                     <br>For High-temperature, see <a href="#pvc_v_90_operate_at_90">PVC V-90 Operate at 90°C</a> .
+                  </td>
+               </tr>
+               <tr>
+                  <td>XLPE X-90 Standard 90°C</td>
+                  <td>Most popular XLPE.
+                     <br>Max. temperature: 90°C
+                  </td>
+               </tr>
+               <tr>
+                  <th colspan="2">Special PVC</th>
+               </tr>
+               <tr>
+                  <td>PVC V-75 Traditional 75°C</td>
+                  <td>Older type PVC cables.
+                     <br>Traditionally labelled V-75.
+                     <br>Max. temperature: 75°C.
+                  </td>
+               </tr>
+               <tr>
+                  <td id="pvc_v_90_operate_at_90">PVC V-90 Operate at 90°C</td>
+                  <td>Standard V-90 PVC.
+                     <br>Max. temperature: 75°C.
+                     <br>Can operate at 90°C if there is no mechanical pressure on the insulation.
+                  </td>
+               </tr>
+               <tr>
+                  <td>PVC V-90HT Operate at 105°C</td>
+                  <td>High-temperature PVC.
+                     <br>Max. temperature: 75°C.
+                     <br>Can operate at 105°C for 500 hours per year, if there is no mechanical pressure on the insulation.
+                  </td>
+               </tr>
+               <tr>
+                  <th colspan="2">Special XLPE</th>
+               </tr>
+               <tr>
+                  <td>X-110 High Temp 110°C</td>
+                  <td>High-temperature XLPE.
+                     <br>Max. temperature: 110°C.
+                  </td>
+               </tr>
+               <tr>
+                  <td>X-HF-90 Fire-rated 90°C</td>
+                  <td>Fire-rated XLPE.
+                     <br>Max. temperature: 90°C.
+                  </td>
+               </tr>
+               <tr>
+                  <td>X-HF-110 Fire and High Temp</td>
+                  <td>Fire-rated XLPE.
+                     <br>High-temperature.
+                     <br>Max. temperature: 110°C.
+                  </td>
+               </tr>
+            </table>
+         </li>
+
+         <li id="cableTypeInfo">
+            <p><b>Cable type: </b>Select the cable type as shown below.</p>
+            <table class="generalTable" id="cableTypeTable">
+               <tr>
+                  <th colspan="2">1 Phase AC or DC</th>
+               </tr>
+               <tr>
+                  <td>
+                     <b>Multi-core 2C+E</b><br>
+                     One live core.<br>
+                     One neutral core.<br>
+                     One earth core.
+                  </td>
+                  <td>
+                     <img width="100" height="100" src="https://www.jcalc.net/image/installation/phase_single/cable_two_core/flat/installation_air_spaced_from_surface.png" alt="">
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <b>Multi-core 2C (mains)</b><br>
+                     One live core.<br>
+                     One combined earth and neutral core.
+                  </td>
+                  <td>
+                     <img width="100" height="100" src="https://www.jcalc.net/image/installation/phase_single/cable_two_core_mains/flat/installation_air_spaced_from_surface.png" alt="">
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <b>Single-cores 2x1C+E</b><br>
+                     One live cable.<br>
+                     One neutral cable.<br>
+                     One earth cable.
+                  </td>
+                  <td>
+                     <img width="100" height="100" src="https://www.jcalc.net/image/installation/phase_single/cable_two_single_core/flat/installation_air_spaced_from_surface.png" alt="">
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <b>Single-cores 2x1C (mains)</b><br>
+                     One live cable.<br>
+                     One combined earth and neutral cable.
+                  </td>
+                  <td>
+                     <img width="100" height="100" src="https://www.jcalc.net/image/installation/phase_single/cable_two_single_core_mains/flat/installation_air_spaced_from_surface.png" alt="">
+                  </td>
+               </tr>
+               <tr>
+                  <th colspan="2">3 Phase AC</th>
+               </tr>
+               <tr>
+                  <td>
+                     <b>Multi-core 3C+E</b><br>
+                     Three-phase cores.<br>
+                     One earth core.
+                  </td>
+                  <td>
+                     <img width="100" height="100" src="https://www.jcalc.net/image/installation/phase_three/cable_three_core/trefoil/installation_air_spaced_from_surface.png" alt="">
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <b>Multi-core 4C+E</b><br>
+                     Three-phase cores.<br>
+                     One neutral core.<br>
+                     One earth core.
+                  </td>
+                  <td>
+                     <img width="100" height="100" src="https://www.jcalc.net/image/installation/phase_three/cable_four_core/trefoil/installation_air_spaced_from_surface.png" alt="">
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <b>Multi-core 4C (mains)</b><br>
+                     Three-phase cores.<br>
+                     One combined earth and neutral core.
+                  </td>
+                  <td>
+                     <img width="100" height="100" src="https://www.jcalc.net/image/installation/phase_three/cable_four_core_mains/trefoil/installation_air_spaced_from_surface.png" alt="">
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <b>Single-cores 3x1C+E</b><br>
+                     Three-phase cables.<br>
+                     One earth cable.
+                  </td>
+                  <td>
+                     <img width="100" height="100" src="https://www.jcalc.net/image/installation/phase_three/cable_three_single_core/trefoil/installation_air_spaced_from_surface.png" alt="">
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <b>Single-cores 4x1C+E</b><br>
+                     Three-phase cables.<br>
+                     One neutral cable.<br>
+                     One earth cable.
+                  </td>
+                  <td>
+                     <img width="100" height="100" src="https://www.jcalc.net/image/installation/phase_three/cable_four_single_core/trefoil/installation_air_spaced_from_surface.png" alt="">
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <b>Single-cores 4x1C (mains)</b><br>
+                     Three-phase cables.<br>
+                     One combined earth and neutral core.
+                  </td>
+                  <td>
+                     <img width="100" height="100" src="https://www.jcalc.net/image/installation/phase_three/cable_four_single_core_mains/trefoil/installation_air_spaced_from_surface.png" alt="">
+                  </td>
+               </tr>
+            </table>
+         </li>
+
+         <li id="isFlexibleInfo"><b>Flexible: </b>Select if a flexible cable is used.</li>
+         <li id="conductorInfo"><b>Conductor: </b>Select Copper or Aluminium.</li>
+         <li id="selectedSizeInfo">
+            <p><b>Active size (mm<sup>2</sup>): </b>Select a conductor size or select Auto.
+               The Auto option will automatically select the smallest cable that meets the following criteria.</p>
+            <ul>
+               <li>Current rating.</li>
+               <li>Voltage drop.</li>
+               <li>Fault current rating.</li>
+               <li>Loop impedance.</li>
+               <li>Protection device thermal trip current.</li>
+            </ul>
+            <p>This applies to the live and neutral conductors.</p>
+         </li>
+
+         <li id="showParallelCablesInfo">
+            <p><b>Use parallel cables: </b>Generally, only one cable is required for multi-core applications.
+               Or one <a href="#cableGroupDefinition">cable group</a> is required for single-core applications.</p>
+            <p>This option enables you to use parallel cables in high-current installations,
+               where more than one multi-core cable or more than one single-core <a href="#cableGroupDefinition">cable group</a> is required.
+               This means more than one live core per phase.</p>
+            <p>For single-core applications. The whole <a href="#cableGroupDefinition">cable group</a> is counted as one.
+               A <a href="#cableGroupDefinition">cable group</a> includes Three-phase cables, the neutral cable, and the earth cable.
+               It can be installed in a flat or trefoil formation.</p>
+         </li>
+
+         <li id="numberOfCablesInfo">
+            <p><b>No of cables or cable groups: </b>Specify the number of parallel cables or parallel <a href="#cableGroupDefinition">cable groups</a>.</p>
+
+            <table class="generalTable">
+               <tr>
+                  <td>Multi-core cables</td>
+                  <td>Number of cables<br>
+                     <img width="200" height="70" src="image/content-number-of-cables.png" alt="">
+                  </td>
+               </tr>
+               <tr>
+                  <td>Single-core cable groups</td>
+                  <td>Number of cable groups<br>
+                     <img width="200" height="70" src="image/content-number-of-cable-groups.png" alt="">
+                  </td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+
+      <h2 id="earthCableHeadingInfo">Earth cable parameters</h2>
+      <ul class="parameterList">
+         <li id="earthInsulationInfo"><b>Earth cable insulation: </b>Applicable to single-core cables. It can be different than the active cable insulation.
+            The options are the same as the <a href="#insulationInfo">active cable insulation options.</a></li>
+         <li id="earthIsFlexibleInfo"><b>Flexible earth: </b>Applicable to single-core cables. Select if a flexible earth cable is used.</li>
+         <li id="earthConductorInfo"><b>Earth conductor: </b>Applicable to single-core cables. Select Copper or Aluminium. Note that you cannot select Aluminium for a copper active cable. Please let me know if you need to.</li>
+         <li id="selectedEarthSizeInfo">
+            <p><b>Earth core size (mm<sup>2</sup>): </b>Select an earth cable size or select Auto.</p>
+            <p>To manually select a specific earth size, you have to manually select a specific active size first.</p>
+            <p>For multi-core <u>copper</u> cables, in Auto mode, the calculator will select the minimum earth size from <a href="https://www.jcalc.net/minimum-cable-earth-sizes-as3000">Table 5.1 in AS/NZS 3000-2018</a>. These sizes match most commercial copper multi-core cables.</p>
+
+            <p>For multi-core <u>aluminium</u> cables, in Auto mode, the calculator will select an earth size equal to the active size. This is the case in most commercial aluminium cables.</p>
+
+            <p>For single-core cables, in Auto, the selection process is:</p>
+            <ul>
+               <li>Step 1: The calculator starts with the minimum recommended earth size <a href="https://www.jcalc.net/minimum-cable-earth-sizes-as3000">Table 5.1 in AS/NZS 3000-2018</a>.</li>
+               <li>Step 2: The earth cable size is increased until the earth fault current rating and earth loop impedance are adequate.</li>
+               <li>Step 3: If no suitable earth cable size is found, the active size is used. If you need a larger earth cable, select it manually.</li>
+            </ul>
+            <p>If the earth core size is selected manually, the selected earth cable is still checked for compliance against Table 5.1 in AS/NZS 3000-2018. The fault rating and earth loop impedance are also checked when these options are selected. This applies to both single and multi-core cables.</p>
+
+            <p>Note that <u>AS/NZS 3000:2018, Table 5.1 does not specify aluminium earth sizes</u>. Aluminium earth sizes in the calculator are calculated based on the impedance and fault rating of the required copper earth cables. Click <a href="https://www.jcalc.net/minimum-cable-earth-sizes-as3000">here</a> for more details.</p>
+
+            <p>For parallel active and parallel earth cables, the combined active size is calculated as:</p>
+            <p> \(S_{active\_combined} = \dfrac {S_{active} \cdot m}{n} \) </p>
+            <p>Where,</p>
+            <ul>
+               <li><b>S<sub>active</sub></b> is the size of one of the active cables in mm<sup>2</sup>.</li>
+               <li><b>m</b> is the number of parallel phase cables.</li>
+               <li><b>n</b> is the number of parallel earth cables.</li>
+            </ul>
+            <p>The combined active size is then used to select the minimum earth size from <a href="https://www.jcalc.net/minimum-cable-earth-sizes-as3000">Table 5.1 in AS/NZS 3000-2018</a>.</p>
+            <p>For copper earth cables, if the combined active size is larger than 630 mm<sup>2</sup>, an earth size of at least 25% of the combined active size is calculated, as specified by <a href="https://www.jcalc.net/minimum-cable-earth-sizes-as3000">Table 5.1 in AS/NZS 3000-2018</a>.</p>
+            <p>For aluminium earth cables, if the combined active size is larger than 630 mm<sup>2</sup>, an aluminium earth size of at least 40% of the combined active aluminium size is used from the <a href="https://www.jcalc.net/minimum-cable-earth-sizes-as3000">jCalc calculated minimum aluminium earth size values</a>.</p>
+            <p>Note that for multiple earth cables, the calculator checks that each earth cable is equal to, or larger than, the minimum earth cable required for one individual active conductor.</p>
+            <p>For example, in <a href="https://www.jcalc.net/minimum-cable-earth-sizes-as3000">Table 5.1 in AS/NZS 3000-2018</a> the minimum earth cable size for a 240 mm<sup>2</sup> active cable is 95 mm<sup>2</sup>.
+               If two earth cables are selected, the minimum individual earth cable size is still 95 mm<sup>2</sup>.</p>
+         </li>
+
+         <li id="numberOfEarthCablesInfo">
+            <p><b>No of earth cores or cables: </b></p>
+            <table class="generalTable">
+               <tr>
+                  <td>Multi-core cables</td>
+                  <td>Matches the number of parallel cables.<br>
+                     Cannot be changed.</td>
+               </tr>
+               <tr>
+                  <td>One single-core <a href="#cableGroupDefinition">cable group</a></td>
+                  <td> One or two earth cables. </td>
+               </tr><tr>
+                  <td>Multipe single-core <a href="#cableGroupDefinition">cable groups</a></td>
+                  <td>Any number of earth cables between one and the number of parallel cable groups. </td>
+               </tr>
+            </table>
+         </li>
+      </ul>
+
+
+
+
+      <h2 id="installationHeadingInfo">Installation parameters</h2>
+      <ul class="parameterList">
+         <li id="formationInfo"><b>Formation: </b>Trefoil or laid flat. </li>
+         <li id="installationInfo"><b>Installation method: </b>Select the installation method.
+            Consider the worst-case section of the cable installation.
+            Which is the installation section with the lowest current rating.</li>
+      </ul>
+
+      <h2 id="installationDeratingHeadingInfo">Installation derating parameters</h2>
+      <ul class="parameterList">
+         <li id="showDeratingOptionsInfo">
+            <p><b>Show derating options: </b>Check this box if you want to specify derating options. If not, the following default derating options are used.</p>
+            <table class="generalTable">
+               <tr>
+                  <td></td>
+                  <td>Australian conditions</td>
+                  <td>New Zealand conditions</td>
+               </tr>
+               <tr>
+                  <td>Number of cables or cable groups</td>
+                  <td>1</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>Air temperature</td>
+                  <td>40 °C</td>
+                  <td>30 °C</td>
+               </tr>
+               <tr>
+                  <td>Soil temperature</td>
+                  <td>25 °C</td>
+                  <td>15 °C</td>
+               </tr>
+               <tr>
+                  <td>Cable depth</td>
+                  <td>0.5 m</td>
+                  <td>0.5 m</td>
+               </tr>
+               <tr>
+                  <td>Soil resistivity</td>
+                  <td>1.2 °C.m/W</td>
+                  <td>1.2 °C.m/W</td>
+               </tr>
+               <tr>
+                  <td>Circuit derating</td>
+                  <td>None</td>
+                  <td>None</td>
+               </tr>
+            </table>
+         </li>
+
+         <li id="supportInfo"><b>Cable support: </b>The cable support options depend on the installation method. </li>
+
+         <li id="numberOfCircuitsInfo">
+            <p><b>Number of cables, cable groups, or enclosures: </b>
+               This is required when multiple cables are installed close to each other,
+               where the heat radiated from adjacent cables affects the current rating.
+
+            <p>It includes parallel multi-core cables and parallel single-core <a href="#cableGroupDefinition">cable groups</a>.
+               For parallel multi-core cables, each cable is considered in the derating.
+               For parallel single-core <a href="#cableGroupDefinition">cable groups</a>, each cable group is considered in the derating
+               -not the individual cables for each phase or the neutral.</p>
+
+            <p>Here are a few examples.</p>
+
+            <table class="generalTable">
+               <tr>
+                  <td>Multi-core cables</td>
+                  <td>Number of cables<br>
+                     <img width="200" height="70" src="image/content-number-of-cables.png" alt="">
+                  </td>
+               </tr>
+               <tr>
+                  <td>Single-core cables</td>
+                  <td>Number of <a href="#cableGroupDefinition">cable groups</a><br>
+                     <img width="200" height="70" src="image/content-number-of-cable-groups.png" alt="">
+                  </td>
+               </tr>
+               <tr>
+                  <td>Multi-core cables<br>
+                     One cable per enclosure
+                  </td>
+                  <td>Number of enclosures<br>
+                     <img width="200" height="70" src="image/content-number-of-cables-enclosure.png" alt="">
+                  </td>
+               </tr>
+               <tr>
+                  <td>Single-core cable<br>
+                     One <a href="#cableGroupDefinition">cable group</a> per enclosure</td>
+                  <td>Number of enclosures<br>
+                     <img width="200" height="70" src="image/content-number-of-cable-groups-enclosure.png" alt="">
+                  </td>
+               </tr>
+               <tr>
+                  <td>Single-core cables<br>
+                     One cable per enclosure</td>
+                  <td>Number of <a href="#cableGroupDefinition">cable groups</a><br>
+                     <img width="200" height="70" src="image/content-number-of-cable-groups-enclosure-seperate.png" alt="">
+                  </td>
+               </tr>
+            </table>
+
+         </li>
+
+         <li id="spacingInfo">
+            <p><b>Space between cables, cable groups or enclosures: </b>
+               Select the spacing between multi-core cables, single-core <a href="#cableGroupDefinition">cable groups</a> or enclosures (underground multi- and single-core).
+               The table below shows the spacing that can be selected for different installations and cable types.</p>
+
+            <table class="generalTable">
+               <tr>
+                  <th>In air</th>
+                  <th>Multi-core cables</th>
+               </tr>
+               <tr>
+                  <td colspan="2">
+                     Space between the <span class="important">edges</span> of cables.</td>
+               </tr>
+               <tr>
+                  <td>Touching</td>
+                  <td><img width="200" height="70" src="image/content-space-between-cables-air-touching.png" alt=""></td>
+               </tr>
+               <tr>
+                  <td>Spaced 1D</td>
+                  <td>The diameter of the largest cable.<br>
+                     <img width="200" height="70" src="image/content-space-between-cables-air-1d.png" alt="">
+                  </td>
+               </tr>
+
+               <tr>
+                  <th>In air</th>
+                  <th>Single-core cables</th>
+               </tr>
+               <tr>
+                  <td colspan="2">Space between the <span class="important">edges</span> of <a href="#cableGroupDefinition">cable groups</a>.</td>
+               </tr>
+               <tr>
+                  <td>Touching</td>
+                  <td><img width="200" height="70" src="image/content-space-between-cable-groups-air-touching.png" alt=""></td>
+               </tr>
+               <tr>
+                  <td>Spaced 1D</td>
+                  <td>The diameter of the largest cable.<br>
+                     <img width="200" height="70" src="image/content-space-between-cable-groups-air-1d.png" alt="">
+                  </td>
+               </tr>
+
+               <tr>
+                  <th>Underground</th>
+                  <th>Multi-core cables</th>
+               </tr>
+               <tr>
+                  <td colspan="2">Space between the <span class="important">centres</span> of cables.</td>
+               </tr>
+               <tr>
+                  <td>Touching</td>
+                  <td rowspan="5">
+                     Buried direct<br>
+                     <img width="200" height="70" src="image/content-space-between-cables-underground-direct-450mm.png" alt=""><br>
+                     Underground enclosure<br>
+                     <img width="200" height="70" src="image/content-space-between-cables-underground-enclosure-150mm.png" alt="">
+                  </td>
+               </tr>
+               <tr>
+                  <td>150 mm</td>
+               </tr>
+               <tr>
+                  <td>300 mm</td>
+               </tr>
+               <tr>
+                  <td>450 mm</td>
+               </tr>
+               <tr>
+                  <td>600 m</td>
+               </tr>
+
+               <tr>
+                  <th>Underground</th>
+                  <th>Single-core cables</th>
+               </tr>
+               <tr>
+                  <td colspan="2">Space between the <span class="important">centres</span> of <a href="#cableGroupDefinition">cable groups</a>.</td>
+               </tr>
+               <tr>
+                  <td>Touching</td>
+                  <td rowspan="5">
+                     Buried direct<br>
+                     <img width="200" height="70" src="image/content-space-between-cable-groups-underground-direct-600mm.png" alt=""><br>
+                     Underground enclosure<br>
+                     <img width="200" height="70" src="image/content-space-between-cable-groups-underground-enclosure-300mm.png" alt="">
+                  </td>
+               </tr>
+               <tr>
+                  <td>150 mm</td>
+
+               </tr>
+               <tr>
+                  <td>300 mm</td>
+               </tr>
+               <tr>
+                  <td>450 mm</td>
+               </tr>
+               <tr>
+                  <td>600 m</td>
+               </tr>
+            </table>
+
+         </li>
+
+
+         <li id="numberOfTiersInfo">
+
+            <p><b>No of tiers: </b>Number of tiers.</p>
+            <ul>
+               <li id="numberOfTiersInfo_2"><b>No of horizontally tiered racks: </b>
+                  The number of horizontal tiers (rows) of racks or ladders installed above each other.
+                  The minimum vertical space between racks is 300mm. See AS/NZS 3008:2017 Tables 23 and 24.
+               </li>
+               <li id="numberOfTiersInfo_4"><b>No of horizontally tiered unperforated trays: </b>
+                  The number of horizontal tiers (rows) of trays installed above each other.
+                  The minimum vertical space between trays is 300mm. See AS/NZS 3008:2017 Tables 23 and 24.
+               </li>
+               <li id="numberOfTiersInfo_5"><b>No of horizontally tiered perforated trays: </b>
+                  The number of horizontal tiers (rows) of trays installed above each other.
+                  The minimum vertical space between trays is 300mm. See AS/NZS 3008:2017 Tables 23 and 24.
+               </li>
+               <li id="numberOfTiersInfo_6"><b>No of vertical back-to-back perforated trays: </b>
+                  On or two vertical back-to-back trays. The minimum vertical space between trays is 230mm.
+                  ee AS/NZS 3008:2017 Tables 23 and 24.
+               </li>
+            </ul>
+         </li>
+
+         <li id="airTemperatureInfo"><b>Air temperature (°C): </b> For cables installed in air. The defaults (no derating) are.
+            <ul>
+               <li>Australian condictions: 40°C</li>
+               <li>New Zealand condictions: 30°C</li>
+            </ul>
+         </li>
+         <li id="soilTemperatureInfo"><b>Soil temperature (°C): </b> For cables installed underground. The defaults (no derating) are:
+            <ul>
+               <li>Australian condictions: 25°C</li>
+               <li>New Zealand condictions: 15°C</li>
+            </ul>
+         </li>
+         <li id="cableDepthInfo"><b>Cable depth (m): </b> The default (no derating) is 0.5 m.</li>
+         <li id="soilResistivityInfo"><b>Soil resistivity (°C.m/W): </b> The default (no derating) is 1.2 °C.m/W.</li>
+      </ul>
+
+      <h2 id="protectionHeadingInfo">Short circuit protection parameters</h2>
+      <ul class="parameterList">
+         <li id="checkFaultRatingInfo"><b>Check short circuit rating: </b>Select to check the fault rating of the cable.</li>
+         <li id="checkLoopImpedanceInfo">
+            <p><b>Check loop impedance: </b>Select to check the earth loop impedance of the circuit.
+               In other words, check if the specified protection device will trip for an earth fault when the specified cable is used.</p>
+            <p>The external source impedance is estimated, calculated, or specified (measured). The method depends on the selected <a href="#protectionInfo">protection device</a>.
+               When it is calculated, it is calculated from the prospective earth fault current.</p>
+            <table id="checkLoopImpedanceTable" class="generalTable">
+               <tr>
+                  <th>Protection device</th>
+                  <th>Loop impedance medhod</th>
+               </tr>
+               <tr>
+                  <td><a href="#shortCircuitHeadingInfoMCB">MCB</a></td>
+                  <td>Estimated, Calculated or Measured</td>
+               </tr>
+               <tr>
+                  <td><a href="#shortCircuitHeadingInfoMCCB">MCCB</a></td>
+                  <td>Calculated</td>
+               </tr>
+               <tr>
+                  <td><a href="#shortCircuitHeadingInfoGeneric">Generic device</a></td>
+                  <td>Calculated<br></td>
+               </tr>
+            </table>
+         </li>
+
+         <li id="protectionInfo">
+            <p><b>Protection: </b> Select protection device. MCB, MCCB, or Generic.</p>
+
+            <table id="protectionTable" class="generalTable">
+               <tr>
+                  <th>Protection device</th>
+                  <th>Description</th>
+               </tr>
+               <tr>
+                  <td><a href="#shortCircuitHeadingInfoMCB">MCB</a></td>
+                  <td>Miniature circuit breakers. From 1&nbsp;A to 125&nbsp;A.</td>
+               </tr>
+               <tr>
+                  <td><a href="#shortCircuitHeadingInfoMCCB">MCCB</a></td>
+                  <td>Moulded case circuit breakers. From 16&nbsp;A to 630&nbsp;A.</td>
+               </tr>
+               <tr>
+                  <td><a href="#shortCircuitHeadingInfoGeneric">Generic device</a></td>
+                  <td>Generic phase and earth current fault protection.<br>With definite time settings.</td>
+               </tr>
+            </table>
+         </li>
+
+      </ul>
+
+
+      <h2 id="shortCircuitHeadingInfoMCB">Short circuit protection parameters -MCB</h2>
+      <ul class="parameterList">
+
+         <li id="mcbCurveInfo"><b>MCB curve type: </b>The MCB tripping curve: B, C or D.</li>
+         <li id="mcbRatingInfo"><b>MCB rating: </b>Select an MCB rating or select Auto.
+            The auto option will automatically select the recommended size from Tables C6 and C7 in AS/NZS 3000-2018.
+            In Auto, the MCB size is selected for the load current. And then checked against the cable.</li>
+         <li id="sourceImpedanceTypeInfo"><b>Source impedance: </b>Specify the method to determine the source (external) loop impedance.
+            <ul>
+               <li><b>Estimate: </b>Estimate according to AS/NZS 3000-2018, i.e. assume that 80% voltage is available at the cable source during an earth fault.</li>
+               <li><b>Calculate: </b>Calculate from the prospective fault current.</li>
+               <li><b>Measured: </b>Specify the measured impedance in Ohm.</li>
+            </ul>
+         </li>
+         <li id="earthFaultCurrentInfo_2"><b>Prospective earth fault current (kA): </b>Specify the prospective earth fault current on the primary side of the circuit breaker.
+            This parameter is required when the <a href="#sourceImpedanceTypeInfo">source impedance method</a> is selected as "Calculate".
+            It is used to calculate the external source loop impedance for earth faults.</li>
+      </ul>
+
+
+      <h2 id="shortCircuitHeadingInfoMCCB">Short circuit protection parameters -MCCB</h2>
+      <ul class="parameterList">
+         <li id="mccbMakeInfo"><b>Make: </b>Currenly only Schneider is supported. Please let me know if you need other manufacturers.</li>
+         <li id="mccbModelInfo"><b>Model: </b>
+            The number in the Schneider model name represents the current rating of the circuit breaker. For example, NSX250 is 250 A.
+            Note that NSX (100 to 630 A) and NS (800 to 3200 A) are two different circuit breaker model ranges.
+         </li>
+         <li id="mccbFaultRatingInfo"><b>CB fault rating: </b>The fault current rating of the circuit breaker. This affects the let-though energy.</li>
+         <li id="mccbTripUnitTypeInfo"><b>Trip unit: </b>Select between Thermal Magnetic (NSX), Micrologic 2.3 (NSX) or Micrologic 2.0. (NS)
+            <ul>
+               <li><b>Thermal Magnetic (NSX)</b>
+                  <ul>
+                     <li id="mccbTripUnitInfo_1">
+                        <b>Trip unit rating: </b>
+                        Select the current rating or select Auto.
+                        The following are automatically selected in Auto: trip unit rating, thermal trip setting, and magnetic trip setting.
+                        The trip unit rating, and the thermal trip setting, are selected to be ≥ the load current.
+                     </li>
+
+                     <li id="mccbThermalPickupInfo_1">
+                        <b>Thermal trip: </b>
+                        The thermal trip setting can be selected if the trip unit rating is selected manually.
+                     </li>
+                     <li id="mccbMagneticPickupInfo_1">
+                        <b>Magnetic trip: </b>
+                        The magnetic trip setting can be selected if the trip unit rating is selected manually.
+                     </li>
+                  </ul>
+               </li>
+
+               <li><b>Micrologic 2.3 (NSX)</b>
+                  <ul>
+                     <li id="mccbTripUnitInfo_3">
+                        <b>Trip unit rating: </b>
+                        Select the current rating or select Auto.
+                        The following are automatically selected in Auto: trip unit rating, thermal trip setting, short-time trip setting, and instantaneous trip setting.
+                        The trip unit rating, and the thermal trip setting, are selected to be ≥ the load current.
+                        The short-time trip setting is selected as 6x the thermal trip setting.
+                     </li>
+                     <li id="mccbThermalPickupInfo_3">
+                        <b>Thermal trip: </b>
+                        The thermal trip setting can be selected if the trip unit rating is selected manually.
+                     </li>
+                     <li id="mccbShortTimePickupInfo_3">
+                        <b>Short-time trip: </b>
+                        The short-time trip setting can be selected if the trip unit rating is selected manually.
+                     </li>
+                     <li id="mccbInstantaneousPickupInfo_3">
+                        <b>Instantaneous trip: </b>
+                        The instantaneous trip setting can be selected if the trip unit rating is selected manually.
+                     </li>
+                  </ul>
+               </li>
+
+               <li><b>Micrologic 2.0 (NS)</b>
+                  <ul>
+                     <li id="mccbTripUnitInfo_4">
+                        <b>Trip unit rating: </b>
+                        Select the current rating or select Auto.
+                        The following are automatically selected in Auto: trip unit rating, thermal trip setting and short-time trip setting.
+                        The trip unit rating, and the thermal trip setting, are selected to be ≥ the load current.
+                        The short-time trip setting is selected as 6x the thermal trip setting.
+                     </li>
+                     <li id="mccbThermalPickupInfo_4">
+                        <b>Thermal trip: </b>
+                        The thermal trip setting can be selected if the trip unit rating is selected manually.
+                     </li>
+                     <li id="mccbShortTimePickupInfo_4">
+                        <b>Short-time trip: </b>
+                        The short-time trip setting can be selected if the trip unit rating is selected manually.
+                        Note that the catalogue refers to this as instantaneous protection.
+                        However, I call it short time, because it works like short time on the other trip units.
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+         </li>
+
+         <li id="faultCurrentInfo_3"><b>Prospective phase fault: </b>
+            The prospective phase fault current on the primary side of the circuit breaker.
+            Specify the 3-phase fault current for "3 Phase AC" supplies. Or specify the phase-to-neutral fault current for "1 Phase AC" and "DC" supplies.
+            When <a href="#checkFaultRatingInfo">Check short circuit rating</a> is selected, this parameter is used to calculate
+            the phase fault let-through-energy (I<sup>2</sup>t) of the circuit breaker and compares it against the fault energy rating of the cable.
+         </li>
+         <li id="earthFaultCurrentInfo_3"><b>Prospective earth fault (kA): </b>
+            The prospective earth fault current on the primary side of the circuit breaker.
+            Specify the phase-to-earth fault current for "3 Phase AC", "1 Phase AC" and "DC" supplies.
+            When <a href="#checkLoopImpedanceInfo">Check loop impedance</a> is selected,
+            this parameter is also used to calculate the external source loop impedance for earth faults.
+            And when <a href="#checkFaultRatingInfo">Check short circuit rating</a> is selected, it is used to calculate
+            the earth fault let-through-energy (I<sup>2</sup>t) of the circuit breaker and compares it against the fault energy rating of the cable.
+         </li>
+      </ul>
+
+
+
+      <h2 id="shortCircuitHeadingInfoGeneric">Short circuit protection parameters -Generic</h2>
+      <ul class="parameterList">
+         <li id="isFaultLimitingInfo"><b>Current limiting (yes/no): </b>
+            Specify if the circuit breaker or fuse can limit the fault energy. For example current limiting fuses and MCCBs.
+         </li>
+         <li id="faultCurrentInfo"><b>Prospective phase fault current (kA): </b>
+            The prospective fault current on the primary side of the circuit breaker.
+            It is used to calculate the phase fault current at the load.
+            It is used to check the phase fault current rating of the live and neutral cores of the cable if the current limiting option is not selected.
+         </li>
+         <li id="faultEnergyInfo"><b>Phase fault let through energy (A<sup>2</sup>s): </b>
+            It is checked against the fault energy rating of the live and neutral cores of the cable if the current limiting option is not selected
+            The let-through energy (I<sup>2</sup>t) is available on current-limiting curves from the device manufacturer.
+            It is a function of the prospective phase fault current.
+         </li>
+         <li id="faultTimeInfo"><b>Phase fault trip time (ms): </b>
+            The phase fault clearing time of the protection device.
+            It is used to check the fault current rating of the live and neutral cores of the cable if the current limiting option is not selected.
+         </li>
+         <li id="earthFaultCurrentInfo"><b>Prospective earth fault current (kA): </b>
+            The prospective phase-to-earth fault current.
+            It is used to calculate the earth fault current at the load.
+            It is used to calculate the external earth loop impedance.
+            It is used to check the earth fault current rating of the live and earth cores of the cable if the current limiting option is not selected.
+         </li>
+         <li id="earthFaultEnergyInfo"><b>Earth fault let through energy (A<sup>2</sup>s): </b>
+            It is checked against the fault energy rating of the live and earth cores of the cable if the current limiting option is not selected.
+            The let-through energy (I<sup>2</sup>t) is available on current-limiting curves from the device manufacturer.
+            It is a function of the prospective earth fault current.
+         </li>
+         <li id="earthFaultCurrentPickupInfo"><b>Earth fault trip current (A): </b>
+            The earth fault trip setting of the protection device.
+            It is used to check the earth loop impedance of the circuit.
+         </li>
+         <li id="earthFaultTimeInfo"><b>Earth fault trip time (ms): </b>
+            The earth fault clearing time of the protection device.
+            It is used to check the earth fault current rating of the live and earth cores of the cable if the current limiting option is not selected.
+         </li>
+      </ul>
+
+
+      <h2 id="cableGroupDefinition">Cable group definition</h2>
+
+      <p>A <b>cable group</b> refers to a set of single-core cables in a circuit.
+         For example, red, white, and blue phase single-core cables.</p>
+      <p>For three-phase applications, A <b>cable group</b> includes Three-phase cables, the neutral cable (if applicable), and the earth cable.
+         It can be installed in a flat or trefoil formation.</p>
+      <p>For single-phase applications, A <b>cable group</b> includes a phase cable, a neutral cable, and an earth cable.
+      </p>
+
+      <div class="imageBorder">
+         <img width="300" height="200" src="image/content-cable-group.png" alt="">
+      </div>
+      <p>Each set is counted as one separate cable group.</p>
+
+      <ul style="color: #ff924d">
+         <li>Do not count the Three-phases.</li>
+         <li>Do not count the neutral.</li>
+         <li>Do not count the earth cable.</li>
+      </ul>
+
+      <p>Example: Two parallel single-core cable groups. </p>
+      <div class="imageBorder">
+         <img width="300" height="200" src="image/content-parallel-cable-groups.png" alt="">
+      </div>
+
+      <p>Example: Two parallel multi-core cables.</p>
+      <div class="imageBorder">
+         <img width="300" height="200" src="image/content-parallel-cables.png" alt="">
+      </div>
+
+      <h2 id="ratingCalculation">Cable current rating calculation</h2>
+
+      <p>The current ratings are selected from Tables 4 to 21 in AS/NZS 3008-2017. It is based on cable type, insulation type and the cable installation method.</p>
+      <p>For Australian conditions, Tables 4 to 21 are based on an ambient temperature of 40°C and a ground temperature of 25°C.</p>
+      <p>For New Zealand conditions, Tables 4 to 21 are based on an ambient temperature of 30°C and a ground temperature of 15°C.</p>
+      <p>The cable sizing calculator supports the following conductors:</p>
+      <ul>
+         <li>Copper (solid, stranded and flexible).</li>
+         <li>Aluminum (solid, stranded and flexible). </li>
+      </ul>
+
+
+      <h2 id="deratingCalculation">Cable current derating calculation</h2>
+
+      <p>The current derating for the cables has been implemented according to AS/NZS 3008:2017.</p>
+
+
+
+      <h2 id="impedanceCalculation">Cable impedance calculation</h2>
+      <p>The impedance is calculated as: </p>
+      <p>\(Z_c = \sqrt{R_c^2 + X_c^2}\)</p>
+      <p>Where,</p>
+      <ul>
+         <li><b>R<sub>c</sub></b> is the cable <a href="#resistance">resistance</a> in &Omega;/km.</li>
+         <li><b>X<sub>c</sub></b> is the cable <a href="#reactance">reactance</a> in &Omega;/km.</li>
+      </ul>
+
+
+      <h2 id="loopImpedanceCalculation">Loop impedance calculation</h2>
+
+      <p>The maximum loop distance is calculated as:</p>
+
+      <p>\(L_{max}=\dfrac{0.8 \cdot V_{1\phi} \cdot 1000}{I_{min} \cdot Z_{c} }\)</p>
+      <p>Where:</p>
+      <ul>
+         <li><b>V<sub>1&Phi;</sub></b> is the single phase voltage.</li>
+         <li><b>I<sub>min</sub></b> is the minimum allowable tripping current of the MCB or other protection device.</li>
+         <li><b>Z<sub>c</sub></b> is the cable impedance in Ohm/km.</li>
+      </ul>
+
+
+      <h2 id="voltageDropCalculationWorseCase">Voltage drop calculation with worst case load power factor</h2>
+
+      <p>This is the default method in the calculator.</p>
+
+      <p>It is the simplest. The most conservative. And the most often used.</p>
+
+      <p>The worst-case power factor is when the cable and load power factors are the same.</p>
+
+      <p>The voltage drop formulas are shown below. </p>
+
+      <table class="generalTable eq_small" style="max-width:600px">
+         <tr>
+            <td style="text-align:center;font-weight:bold;">1 Phase AC</td>
+            <td>\(\Delta V_{1\phi}=\dfrac{I \cdot L \cdot 2 \cdot Z_{c}}{1000}\)</td>
+         </tr>
+         <tr>
+            <td style="text-align:center;font-weight:bold;">3 Phase AC</td>
+            <td>\(\Delta V_{3\phi}=\dfrac{I \cdot L \cdot \sqrt{3} \cdot Z_{c}}{1000}\)</td>
+         </tr>
+         <tr>
+            <td style="text-align:center;font-weight:bold;">DC</td>
+            <td>\(\Delta V_{dc}=\dfrac{I \cdot L \cdot 2 \cdot R_{c\_ph}}{1000}\)</td>
+         </tr>
+      </table>
+
+      <p>Where,</p>
+      <ul>
+         <li><b>I</b> is the load current in ampere (A). </li>
+         <li><b>L</b> is the cable distance on meters (m). </li>
+         <li><b>Z<sub>c</sub></b> is the cable impedance in &Omega;/km.</li>
+         <li><b>R<sub>c</sub></b> is the cable <a href="#resistance">resistance</a> in &Omega;/km. </li>
+      </ul>
+
+      <p>The impedance <b>Z<sub>c</sub></b> for the worst case power factor is calculated as:</p>
+      <p>\(Z_c = \sqrt{R_c^2 + X_c^2}\)</p>
+      Where,
+      <ul>
+         <li><b>R<sub>c</sub></b> is the cable <a href="#resistance">resistance</a> in &Omega;/km.</li>
+         <li><b>X<sub>c</sub></b> is the cable <a href="#reactance">reactance</a> in &Omega;/km.</li>
+      </ul>
+
+
+      <h2 id="voltageDropCalculationSpecified">Voltage drop calculation with specified load power factor</h2>
+
+      <p>The specified load power factor is used to calculate the voltage drop.</p>
+      <p> This will result in a lower voltage drop.</p>
+      <p>It is useful when the power factor of the load is known. And it is stable at full load. For example, electrical motors.</p>
+
+      <p>The formulas are shown below. </p>
+
+      <table class="generalTable" id="voltDropCalcTableSpecified" style="max-width:600px">
+         <tr>
+            <td class="eq_small">1 Phase AC</td>
+            <td class="eq_small">\(\Delta V_{1\phi} {=} \dfrac{I {\cdot} L {\cdot} 2 {\cdot} [R_{c} {\cdot} \cos (\theta) {+} X_{c} {\cdot} \sin (\theta)]}{1000}\)</td>
+         </tr>
+         <tr>
+            <td class="eq_small">3 Phase AC</td>
+            <td class="eq_small">\(\Delta V_{3\phi} {=} \dfrac{I {\cdot} L {\cdot} \sqrt{3} {\cdot} [R_{c} {\cdot} \cos (\theta) {+} X_{c} {\cdot} \sin (\theta)]}{1000}\)</td>
+         </tr>
+         <tr>
+            <td class="eq_small">DC</td>
+            <td class="eq_small">\(\Delta V_{dc}=\dfrac{I \cdot L \cdot 2 \cdot R_{c\_ph}}{1000}\)</td>
+         </tr>
+      </table>
+
+      <p>Where,</p>
+      <ul>
+         <li><b>I</b> is the load current in ampere (A). </li>
+         <li><b>L</b> is the cable distance on meters (m). </li>
+         <li><b>R<sub>c</sub></b> is the cable <a href="#resistance">resistance</a> in &Omega;/km. </li>
+         <li><b>X<sub>c</sub></b> is the cable <a href="#reactance">reactance</a> in &Omega;/km.</li>
+         <li><b>&theta; = arccos(pf)</b>, and <b>pf</b> is the specified load power factor.</li>
+      </ul>
+
+
+      <h2 id="resistance">Cable resistance</h2>
+
+      <p>The calculator selects the resistance, R<sub>c</sub>, values from Table 34, Table 35 and Table 37 in AS/NZS 3008.</p>
+
+
+      <p>The selection is based on the "Conductor Temperature" selection under the voltage drop options.</p>
+
+      <table class="generalTable" id="resistanceTable">
+         <tr>
+            <th>Conductor temperature</th>
+            <th>Resitance selection</th>
+
+         </tr>
+         <tr>
+            <td>Calculated</td>
+            <td>
+               <p>The conductor temperature is calculated.</p>
+               <p>And the nearest (higher) resistance is selected from the tables.</p>
+               <p>This is described in section 4.4. in AS/NZS 3008.</p>
+               <p>The cable resistance is smaller at lower conductor temperatures.</p>
+            </td>
+
+         </tr>
+         <tr>
+            <td>Maximum</td>
+            <td>
+               <p>The maximum allowable insulation temperature is assumed.</p>
+               <p>And the relevant resistance values are selected from the tables.</p>
+               <p>This is the most conservative option.</p>
+            </td>
+         </tr>
+      </table>
+
+      <p>Table 36 (shaped conductors) is not used. Table 35 (circular conductors) is used instead. It is more conservative.</p>
+
+      <p>AS/NZS 3008 does not specify the DC resistance. The specified AC values are used.</p>
+
+
+
+      <h2 id="reactance">Cable reactance</h2>
+
+      <p>The calculator selects the reactance values, X<sub>c</sub>, from Table 30 and Table 31 in AS/NZS 3008.</p>
+
+
+
+      <h2 id="shortCircuitCalculation">Short circuit calculation</h2>
+
+      <p>The short circuit capacity of the cables is calculated according to AS/NZS 3008-2017 as</p>
+      <p> \(I^2t = K^2S^2\)</p>
+      <p>Where:</p>
+      <ul>
+         <li><b>I</b> is the short circuit current capacity in amperes,</li>
+         <li><b>t</b> is the short circuit duration in seconds.</li>
+         <li><b>S</b> is the cross-sectional area of the conductor.</li>
+         <li><b>K</b> is a constant that is selected from Table 52 in AS/NZS 3008-2017. </li>
+      </ul>
+
+      <p>The fault constant, <b>K</b>, is based on the insulation material, the initial conductor temperature, and the final conductor temperature.
+      <p>The calculator uses the maximum allowable operating temperature as the initial conductor temperature. For example, 75°C is used for PVC insulated cables, 90°C is used for XLPE insulated cables, and 110°C is for XLPE 110°C.</p>
+      <p>The maximum allowable short circuit temperature from Table 53 in AS/NZS 3008-2017 is used as the final conductor temperature i.e. 160°C for PVC and 250°C for XLPE.</p>
+      <p>The calculator selects the K value from Table 52 in AS/NZS 3008, based on the initial conductor temperature and the maximum allowable short circuit temperature.</p>
+
+      <button id="backButton" onclick="back()">&larr; Back</button>
+
+   </div>
+   <!--End content div -->
+</div>
+</div>
+
+<footer>
+  <a href="terms.html">Terms of use</a>
+  &bull;
+  <a href="privacy.html">Privacy</a>
+  &bull;
+  <a href="contact.html">Contact</a>
+  <br>
+  © 2024 All rights reserved, jCalc<span style="vertical-align: super;font-size: 0.7em">&reg;</span> Pty Ltd
+</footer>
+
+
+</html>
+
+
